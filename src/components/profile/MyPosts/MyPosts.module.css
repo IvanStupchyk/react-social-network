@@ -1,0 +1,21 @@
+.posts_container {
+    margin-left: 20px;
+    width: 600px;
+}
+
+.title_posts {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.input_news {
+    height: 40px;
+    width: 100%;
+    background-color: #e5e5e5;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+
+
