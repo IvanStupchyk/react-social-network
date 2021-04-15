@@ -1,7 +1,7 @@
-import React from "react";
-import s from './UserInfo.module.css';
+import React from 'react';
+import s from './ProfileInfo.module.css';
 
-function UserInfo() {
+function ProfileInfo() {
     return (
         <div className={s.profile_information_container}>
             <div className={s.ava_container}>
@@ -18,4 +18,4 @@ function UserInfo() {
     )
 }
 
-export default UserInfo;
+export default ProfileInfo;

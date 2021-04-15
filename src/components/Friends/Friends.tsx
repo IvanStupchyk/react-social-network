@@ -1,12 +1,12 @@
 import React from "react";
-import s from './Header.module.css';
+import s from './Friends.module.css';
 
-function Header() {
+function Friends() {
     return (
-        <header className={s.header}>
-            <img src='https://www.logodesign.net/images/nature-logo.png' />
-        </header>
+        <div>
+            <h4 className={s.title}>Friends</h4>
+        </div>
     )
 }
 
-export default Header;
+export default Friends;

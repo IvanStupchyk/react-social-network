@@ -1,12 +1,22 @@
 .nav {
+    padding: 20px;
     grid-area: n;
     background-color: burlywood;
 }
 
-.item {
+.item a {
     color: #fff;
+    text-decoration: none;
 }
 
-.active {
+.item a.activeLink {
     color: gold;
+}
+
+.tab_friend {
+    margin-top: 30px;
+}
+
+.title_friend {
+    font-size: 18px;
 }
