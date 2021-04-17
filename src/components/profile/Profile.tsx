@@ -1,24 +1,15 @@
 import React from "react";
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import Wallpaper from "./Wallpaper/Wallpaper";
-import {ActionsTypes, ProfilePageType} from "../../redux/store";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-export type PropsPostsType = {
-    profilePage: ProfilePageType
-    dispatch: (action: ActionsTypes) => void
-}
 
-function Profile(props: PropsPostsType) {
+function Profile() {
     return (
         <div>
             <Wallpaper/>
             <ProfileInfo/>
-            <MyPosts
-                posts={props.profilePage.posts}
-                newPostText={props.profilePage.newPostText}
-                dispatch={props.dispatch}
-            />
+            <MyPostsContainer/>
         </div>
     )
 }

@@ -9,28 +9,16 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
-import store from "./redux/redux-store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-
-type StateType = {
-    store: typeof store
-}
-
-function App(props: StateType) {
-
-    const state = props.store.getState()
-    console.log(state)
+function App() {
     return (
         <div className="app-wrapper">
             <Header/>
             <Navbar/>
             <div className="app-wrapper-content">
-                <Route path={"/dialogs"} render={() => <Dialogs dialogsPage={state.dialogsReducer}
-                                                                dispatch={props.store.dispatch.bind(props.store)}
-                />}/>
-                <Route path={"/Profile"} render={() => <Profile profilePage={state.profileReducer}
-                                                                dispatch={props.store.dispatch.bind(props.store)}
-                />}/>
+                <Route path={"/dialogs"} render={() => <DialogsContainer/>}/>
+                <Route path={"/Profile"} render={() => <Profile/>}/>
                 <Route path={"/music"} render={() => <Music/>}/>
                 <Route path={"/news"} render={() => <News/>}/>
                 <Route path={"/settings"} render={() => <Settings/>}/>
