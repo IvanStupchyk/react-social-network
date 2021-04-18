@@ -1,6 +1,6 @@
-import profileReducer, {AddPostActionType, OnPostChangeActionType} from "./profile-reducer";
-import dialogsReducer, {addMessageActionType, messageChangeActionType} from "./dialogs-reducer";
-import sidebarReducer from "./sidebar-reducer";
+import {AddPostActionType, OnPostChangeActionType, profileReducer} from "./profile-reducer";
+import {addMessageActionType, dialogsReducer, messageChangeActionType} from "./dialogs-reducer";
+import {sidebarReducer} from "./sidebar-reducer";
 
 export type PostType = {
     id: number
@@ -50,7 +50,7 @@ export type StoreType = {
 const store: StoreType = {
     _state: {
         profilePage: {
-            newPostText: "",
+            newPostText: '',
             posts: [
                 {id: 1, message: 'Hi, how are you?', likesCount: 3},
                 {id: 2, message: 'It\'s my first post', likesCount: 12},
@@ -60,14 +60,14 @@ const store: StoreType = {
         },
         dialogsPage: {
             dialogs: [
-                {id: "1", name: "Vania"},
-                {id: "2", name: "Andrey"},
-                {id: "3", name: "Sveta"},
-                {id: "4", name: "Sasha"},
-                {id: "5", name: "Victor"},
-                {id: "6", name: "Valera"}
+                {id: '1', name: 'Vania'},
+                {id: '2', name: 'Andrey'},
+                {id: '3', name: 'Sveta'},
+                {id: '4', name: 'Sasha'},
+                {id: '5', name: 'Victor'},
+                {id: '6', name: 'Valera'}
             ],
-            newMessage: "",
+            newMessage: '',
             messages: [
                 {id: 1, message: 'Hi'},
                 {id: 2, message: 'How is your it-kamasutra?'},

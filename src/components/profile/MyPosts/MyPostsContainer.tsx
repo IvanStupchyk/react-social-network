@@ -1,23 +1,19 @@
 import React from "react";
 import {addPostAC, postChangeAC} from "../../../redux/profile-reducer";
-import MyPosts from "./MyPosts";
 import StoreContext from "../../../StoreContext";
+import {MyPosts} from "./MyPosts";
 
 
-function MyPostsContainer() {
+export const MyPostsContainer = () => {
     return (
         <StoreContext.Consumer>
             {
                 store => {
                     const state = store.getState()
 
-                    const addPost = () => {
-                        store.dispatch(addPostAC())
-                    }
+                    const addPost = () => store.dispatch(addPostAC())
 
-                    const onPostChange = (text: string) => {
-                        store.dispatch(postChangeAC(text))
-                    }
+                    const onPostChange = (text: string) => store.dispatch(postChangeAC(text))
 
                     return <MyPosts
                         newPostText={state.profilePage.newPostText}
@@ -30,5 +26,3 @@ function MyPostsContainer() {
         </StoreContext.Consumer>
     )
 }
-
-export default MyPostsContainer;

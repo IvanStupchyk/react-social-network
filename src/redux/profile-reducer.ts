@@ -10,7 +10,7 @@ let initialState = {
     ]
 }
 
-const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes): ProfilePageType => {
+export const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes): ProfilePageType => {
         switch (action.type) {
             case 'ADD-POST':
                 const newPost: PostType = {
@@ -43,5 +43,3 @@ export const postChangeAC = (newText: string) => {
         newText: newText
     } as const
 }
-
-export default profileReducer

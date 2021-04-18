@@ -1,10 +1,10 @@
 import React from "react";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import Wallpaper from "./Wallpaper/Wallpaper";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {Wallpaper} from "./Wallpaper/Wallpaper";
+import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 
-function Profile() {
+export const Profile = () => {
     return (
         <div>
             <Wallpaper/>
@@ -13,5 +13,3 @@ function Profile() {
         </div>
     )
 }
-
-export default Profile;

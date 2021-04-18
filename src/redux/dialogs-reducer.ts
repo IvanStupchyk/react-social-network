@@ -2,12 +2,12 @@ import {ActionsTypes, DialogsPageType, MessageType} from "./store";
 
 let initialState = {
     dialogs: [
-        {id: "1", name: "Vania"},
-        {id: "2", name: "Andrey"},
-        {id: "3", name: "Sveta"},
-        {id: "4", name: "Sasha"},
-        {id: "5", name: "Victor"},
-        {id: "6", name: "Valera"}
+        {id: '1', name: 'Vania'},
+        {id: '2', name: 'Andrey'},
+        {id: '3', name: 'Sveta'},
+        {id: '4', name: 'Sasha'},
+        {id: '5', name: 'Victor'},
+        {id: '6', name: 'Valera'}
     ],
     newMessage: "",
     messages: [
@@ -19,17 +19,18 @@ let initialState = {
     ]
 }
 
-const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsTypes): DialogsPageType => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsTypes): DialogsPageType => {
     switch (action.type) {
-        case "ADD-MESSAGE":
+        case 'ADD-MESSAGE':
             const newMessage: MessageType = {
                 id: new Date().getTime(),
                 message: state.newMessage
             }
+
             state.messages.push(newMessage)
             state.newMessage = ''
             return state
-        case "UPDATE-MESSAGE-TEXT":
+        case 'UPDATE-MESSAGE-TEXT':
             state.newMessage = action.newText
             return state
         default:
@@ -51,6 +52,3 @@ export const messageChangeAC = (newText: string) => {
         newText: newText
     } as const
 }
-
-
-export default dialogsReducer
