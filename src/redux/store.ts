@@ -1,35 +1,36 @@
 import {AddPostActionType, OnPostChangeActionType, profileReducer} from "./profile-reducer";
 import {addMessageActionType, dialogsReducer, messageChangeActionType} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
+import {followACActionType, setUsersACActionType, unFollowACActionType} from "./users-reducer";
 
-export type PostType = {
+type PostType = {
     id: number
     message: string
     likesCount: number
 }
 
-export type ProfilePageType = {
+type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
 }
 
-export type DialogType = {
+type DialogType = {
     id: string
     name: string
 }
 
-export type MessageType = {
+type MessageType = {
     id: number
     message: string
 }
 
-export type DialogsPageType = {
+type DialogsPageType = {
     messages: Array<MessageType>
     dialogs: Array<DialogType>
     newMessage: string
 }
 
-export type SidebarType = {}
+type SidebarType = {}
 
 export type RootStateType = {
     profilePage: ProfilePageType
@@ -37,7 +38,7 @@ export type RootStateType = {
     sidebar: SidebarType
 }
 
-export type ActionsTypes = AddPostActionType | OnPostChangeActionType | addMessageActionType | messageChangeActionType
+export type ActionsTypes = AddPostActionType | OnPostChangeActionType | addMessageActionType | messageChangeActionType | followACActionType | unFollowACActionType | setUsersACActionType
 
 export type StoreType = {
     _state: RootStateType
