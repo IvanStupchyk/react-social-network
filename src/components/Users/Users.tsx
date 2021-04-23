@@ -1,6 +1,6 @@
 import React from "react";
 import {UsersType} from "./UsersContainer";
-import s from "./users.module.css"
+import s from "./users.module.scss"
 
 export const Users = (props: UsersType) => {
 

@@ -1,5 +1,3 @@
-import {ActionsTypes} from "./store";
-
 export type LocationType = {
     city: string
     country: string
@@ -17,6 +15,8 @@ export type UserType = {
 export type UsersPageType = {
     users: Array<UserType>
 }
+
+type ActionsTypes = followACActionType | unFollowACActionType | setUsersACActionType
 
 let initialState: UsersPageType = {
     users: [

@@ -1,5 +1,3 @@
-import {ActionsTypes} from "./store";
-
 export type PostType = {
     id: number
     message: string
@@ -11,7 +9,9 @@ export type ProfilePageType = {
     newPostText: string
 }
 
-let initialState: ProfilePageType = {
+type ActionsTypes = AddPostActionType | OnPostChangeActionType
+
+export let initialState: ProfilePageType = {
     newPostText: "",
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 3},

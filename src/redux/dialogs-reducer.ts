@@ -1,5 +1,3 @@
-import {ActionsTypes} from "./store";
-
 export type DialogType = {
     id: string
     name: string
@@ -16,7 +14,9 @@ export type DialogsPageType = {
     newMessage: string
 }
 
-let initialState: DialogsPageType = {
+type ActionsTypes = addMessageActionType | messageChangeActionType
+
+export let initialState: DialogsPageType = {
     dialogs: [
         {id: '1', name: 'Vania'},
         {id: '2', name: 'Andrey'},

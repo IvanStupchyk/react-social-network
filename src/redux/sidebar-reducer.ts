@@ -1,6 +1,6 @@
-import {ActionsTypes} from "./store";
-
 type SidebarType = {}
+
+type ActionsTypes = {}
 
 let initialState = {}
 

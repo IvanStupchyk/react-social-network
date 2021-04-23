@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react';
-import s from './Dialogs.module.css';
+import s from './Dialogs.module.scss';
 import {DialogItem} from "./DialogsItem/DialogsItem";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
