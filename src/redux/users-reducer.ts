@@ -1,29 +1,43 @@
-export type LocationType = {
-    city: string
-    country: string
+// export type LocationType = {
+//     city: string
+//     country: string
+// }
+
+// export type UserType = {
+//     id: number
+//     photoUrl: string
+//     followed: boolean
+//     fullName: string
+//     status: string
+//     location: LocationType
+// }
+
+type PhotosType = {
+    small: null
+    large: null
 }
 
 export type UserType = {
+    name: string
     id: number
-    photoUrl: string
+    uniqueUrlName: null
+    photos: PhotosType
+    status: null
     followed: boolean
-    fullName: string
-    status: string
-    location: LocationType
 }
 
 export type UsersPageType = {
-    users: Array<UserType>
+    items: Array<UserType>
 }
+
+// export type UsersPageType = {
+//     users: Array<UserType>
+// }
 
 type ActionsTypes = followACActionType | unFollowACActionType | setUsersACActionType
 
 let initialState: UsersPageType = {
-    users: [
-        // {id: 1, photoUrl: 'https://stuki-druki.com/biofoto2/ivan-ivanovich-ipatko-01.jpg', followed: false, fullName: 'Ivan', status: 'I\'m a boss', location: {city: 'Brest', country: 'Belarus'}},
-        // {id: 2, photoUrl: 'https://stuki-druki.com/biofoto2/ivan-ivanovich-ipatko-01.jpg', followed: true, fullName: 'Dima', status: 'I\'m a boss too', location: {city: 'Minsk', country: 'Belarus'}},
-        // {id: 3, photoUrl: 'https://stuki-druki.com/biofoto2/ivan-ivanovich-ipatko-01.jpg', followed: false, fullName: 'Ira', status: 'I\'m a boss too', location: {city: 'Kiev', country: 'Ukraine'}}
-    ]
+    items: []
 }
 
 export const UsersReducer = (state: UsersPageType = initialState, action: ActionsTypes): UsersPageType => {
@@ -31,15 +45,15 @@ export const UsersReducer = (state: UsersPageType = initialState, action: Action
         case "FOLLOW":
             return {
                 ...state,
-                users: state.users.map(u => u.id === action.userId ? {...u, followed: true} : u)
+                items: state.items.map(u => u.id === action.userId ? {...u, followed: true} : u)
             }
         case "UNFOLLOW":
             return {
                 ...state,
-                users: state.users.map(u => u.id === action.userId ? {...u, followed: false} : u)
+                items: state.items.map(u => u.id === action.userId ? {...u, followed: false} : u)
             }
         case "SET-USERS":
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, items: [...state.items, ...action.users]}
         default:
             return state
     }

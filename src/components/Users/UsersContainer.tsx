@@ -4,9 +4,10 @@ import {Dispatch} from "redux";
 import {AppStateType} from "../../redux/redux-store";
 import {Users} from "./Users";
 import {followAC, setUsersAC, unFollowAC, UserType} from "../../redux/users-reducer";
+import {UsersClass} from "./UsersClass";
 
 type MapStatePropsType = {
-    users: Array<UserType>
+    items: Array<UserType>
 }
 
 type mapDispatchToPropsType = {
@@ -19,7 +20,7 @@ export type UsersType = MapStatePropsType & mapDispatchToPropsType
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        users: state.usersPage.users
+        items: state.usersPage.items
     }
 }
 
@@ -37,4 +38,6 @@ let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     }
 }
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps) (Users)
+//Array<UserType>
+
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps) (UsersClass)
