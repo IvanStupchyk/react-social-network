@@ -1,16 +1,3 @@
-// export type LocationType = {
-//     city: string
-//     country: string
-// }
-
-// export type UserType = {
-//     id: number
-//     photoUrl: string
-//     followed: boolean
-//     fullName: string
-//     status: string
-//     location: LocationType
-// }
 
 type PhotosType = {
     small: null
@@ -31,19 +18,17 @@ export type UsersPageType = {
     pageSize: number
     currentPage: number
     totalCount: number
+    isFetching: boolean
 }
 
-// export type UsersPageType = {
-//     users: Array<UserType>
-// }
-
-type ActionsTypes = followACActionType | unFollowACActionType | setUsersACActionType | setTotalUsersCountACActionType | changeCurrentPageACActionType
+type ActionsTypes = followACActionType | unFollowACActionType | setUsersACActionType | setTotalUsersCountACActionType | changeCurrentPageACActionType | setIsFetchingType
 
 let initialState: UsersPageType = {
     items: [],
     pageSize: 5,
     currentPage: 1,
-    totalCount: 0
+    totalCount: 0,
+    isFetching: true,
 }
 
 export const UsersReducer = (state: UsersPageType = initialState, action: ActionsTypes): UsersPageType => {
@@ -64,6 +49,8 @@ export const UsersReducer = (state: UsersPageType = initialState, action: Action
             return {...state, totalCount: action.totalCount}
         case "CHANGE-CURRENT-PAGE":
             return {...state, currentPage: action.currentPage}
+        case "TOGGLE-IS-FETCHING":
+            return {...state, isFetching: action.isFetching}
         default:
             return state
     }
@@ -106,5 +93,13 @@ export const changeCurrentPageAC = (currentPage: number) => {
     return {
         type: 'CHANGE-CURRENT-PAGE',
         currentPage
+    } as const
+}
+
+export type setIsFetchingType = ReturnType<typeof setIsFetchingAC>
+export const setIsFetchingAC = (isFetching: boolean) => {
+    return {
+        type: 'TOGGLE-IS-FETCHING',
+        isFetching
     } as const
 }

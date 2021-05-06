@@ -1,79 +1,65 @@
 import React from "react";
-import {UsersType} from "./UsersContainer";
-import s from "./users.module.scss"
-import axios from "axios"
+import s from "./users.module.scss";
+import userPhoto from "../../images/userPhoto.png";
+import {UserType} from "../../redux/users-reducer";
 
-// export const Users = (props: UsersType) => {
-//     if (!props.items.length) {
-//         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-//             props.setUsers(response.data.items)
-//         })
-//     }
+type UsersPropsType = {
+    totalCount: number
+    pageSize: number
+    currentPage: number
+    items: Array<UserType>
+    onPageChanged: (pageNumber: number) => void
+    unFollowUser: (userID: number) => void
+    followUser: (userID: number) => void
+}
 
-    // return (
-    //     <div>
-    //         {
-    //             props.users.map(u => <div key={u.id}>
-    //                 <span>
-    //                     <div>
-    //                         <img src={u.photoUrl} className={s.userPhoto}/>
-    //                     </div>
-    //                     <div>
-    //                         {u.followed
-    //                             ? <button onClick={() => {
-    //                                 props.unFollowUser(u.id)
-    //                             }}>unfollow</button>
-    //                             : <button onClick={() => {
-    //                                 props.followUser(u.id)
-    //                             }}>follow</button>}
-    //                     </div>
-    //                 </span>
-    //                 <span>
-    //                     <span>
-    //                         <div>{u.fullName}</div>
-    //                         <div>{u.status}</div>
-    //                     </span>
-    //                     <span>
-    //                         <div>{u.location.country}</div>
-    //                         <div>{u.location.city}</div>
-    //                     </span>
-    //                 </span>
-    //             </div>)
-    //         }
-    //     </div>
-    // )
+export let Users = (props: UsersPropsType) => {
+    let pagesCount = Math.ceil(props.totalCount / props.pageSize)
+    let pages = []
 
-//     return (
-//         <div>
-//             {
-//                 props.items.map(u => <div key={u.id}>
-//                     <span>
-//                         <div>
-//                             <img src={undefined} className={s.userPhoto}/>
-//                         </div>
-//                         <div>
-//                             {u.followed
-//                                 ? <button onClick={() => {
-//                                     props.unFollowUser(u.id)
-//                                 }}>unfollow</button>
-//                                 : <button onClick={() => {
-//                                     props.followUser(u.id)
-//                                 }}>follow</button>}
-//                         </div>
-//                     </span>
-//                     <span>
-//                         <span>
-//                             <div>{u.name}</div>
-//                             <div>{u.status}</div>
-//                         </span>
-//                         <span>
-//                             {/*<div>{u.location.country}</div>*/}
-//                             {/*<div>{u.location.city}</div>*/}
-//                         </span>
-//                     </span>
-//                 </div>)
-//             }
-//         </div>
-//     )
-// }
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
+    }
 
+    return (
+        <div>
+            <div className={s.numbersPages}>
+                {
+                    pages.map(p => <span
+                        onClick={() => props.onPageChanged(p)}
+                        className={`${props.currentPage === p && s.selectedPage}`}>
+                            {p}</span>)
+                }
+            </div>
+            {
+                props.items.map(u => <div key={u.id}>
+                    <span>
+                        <div>
+                            <img src={userPhoto} className={s.userPhoto}/>
+                            {/*u.photos.small != null ? u.photos.small : userPhoto*/}
+                        </div>
+                        <div>
+                            {u.followed
+                                ? <button onClick={() => {
+                                    props.unFollowUser(u.id)
+                                }}>unfollow</button>
+                                : <button onClick={() => {
+                                    props.followUser(u.id)
+                                }}>follow</button>}
+                        </div>
+                    </span>
+                    <span>
+                        <span>
+                            <div>{u.name}</div>
+                            <div>{u.status}</div>
+                        </span>
+                        <span>
+                            {/*<div>{u.location.country}</div>*/}
+                            {/*<div>{u.location.city}</div>*/}
+                        </span>
+                    </span>
+                </div>)
+            }
+        </div>
+    )
+}
