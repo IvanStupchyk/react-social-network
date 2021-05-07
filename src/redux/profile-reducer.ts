@@ -4,12 +4,39 @@ export type PostType = {
     likesCount: number
 }
 
-export type ProfilePageType = {
-    posts: Array<PostType>
-    newPostText: string
+type ProfileContactsType = {
+    facebook: string
+    website: null
+    vk: string
+    twitter: string
+    instagram: string
+    youtube: null
+    github: string
+    mainLink: null
 }
 
-type ActionsTypes = AddPostActionType | OnPostChangeActionType
+type ProfilePhotosType = {
+    small: string
+    large: string
+}
+
+export type ProfileType = {
+    aboutMe: string
+    contacts: ProfileContactsType
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number
+    photos: ProfilePhotosType
+}
+
+export type ProfilePageType = {
+    newPostText: string
+    posts: Array<PostType>
+    profile: null | ProfileType
+}
+
+type ActionsTypes = AddPostActionType | OnPostChangeActionType | setUserProfileType
 
 export let initialState: ProfilePageType = {
     newPostText: "",
@@ -18,7 +45,8 @@ export let initialState: ProfilePageType = {
         {id: 2, message: 'It\'s my first post', likesCount: 12},
         {id: 3, message: 'It\'s my second post', likesCount: 1},
         {id: 4, message: 'It\'s my third post', likesCount: 3}
-    ]
+    ],
+    profile: null
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes): ProfilePageType => {
@@ -39,6 +67,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
                 ...state,
                 newPostText: action.newText
             }
+        case "SET-USER-PROFILE":
+            return {...state, profile: action.profile}
         default:
             return state
     }
@@ -56,5 +86,13 @@ export const updateNewPostText = (newText: string) => {
     return {
         type: 'UPDATE-POST-TEXT',
         newText: newText
+    } as const
+}
+
+export type setUserProfileType = ReturnType<typeof setUserProfile>
+export const setUserProfile = (profile: ProfileType) => {
+    return {
+        type: 'SET-USER-PROFILE',
+        profile
     } as const
 }
