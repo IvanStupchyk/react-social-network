@@ -15,7 +15,7 @@ export const ProfileInfo = (props: ProfileInfoType) => {
     return (
         <div className={s.profile_information_container}>
             <div className={s.ava_container}>
-                <img src={props.profile.photos.small}></img>
+                <img alt={'user avatar'} src={props.profile.photos.small} />
             </div>
 
             <div>

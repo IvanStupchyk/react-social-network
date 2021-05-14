@@ -25,17 +25,6 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-// let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
-//     return {
-//         updateNewMessageBody: (value: string) => {
-//             dispatch(messageChangeAC(value))
-//         },
-//         addMessage: () => {
-//             dispatch(addMessageAC())
-//         }
-//     }
-// }
-
 export const DialogsContainer = connect(mapStateToProps, {
     updateNewMessageBody,
     addMessage
