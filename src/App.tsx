@@ -7,15 +7,14 @@ import {Settings} from "./components/Settings/Settings";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Navbar} from "./components/Navbar/Navbar";
-import {Header} from "./components/Header/Header";
-import {Profile} from "./components/Profile/Profile";
 import {UsersContainer} from "./components/Users/UsersContainer";
 import {ProfileContainer} from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/Header-container";
 
 export function App() {
     return (
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <Navbar/>
 
             <div className="app-wrapper-content">

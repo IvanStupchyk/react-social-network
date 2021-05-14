@@ -36,10 +36,12 @@ export let Users = (props: UsersPropsType) => {
                 props.items.map(u => <div key={u.id}>
                     <span>
                         <div>
-                            <NavLink to={'/profile/' + u.id}>
-                                <img src={userPhoto} className={s.userPhoto}/>
+                            <NavLink to={`/profile/${u.id}`}>
+                                <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={s.userPhoto}/>
+                                {/*<img src={!!u.photos.small ? u.photos.small : userPhoto} className={s.userPhoto}/>*/}
+
+                                {/*<img src={u.photos.small || userPhoto} className={s.userPhoto}/>*/}
                             </NavLink>
-                            {/*u.photos.small != null ? u.photos.small : userPhoto*/}
                         </div>
                         <div>
                             {u.followed
