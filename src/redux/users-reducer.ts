@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+import {Dispatch} from "redux";
 
 type PhotosType = {
     small: null | string
@@ -121,4 +123,43 @@ export const toggleIsFollowingProgress = (isFollowing: boolean, userId: number) 
         isFollowing,
         userId
     } as const
+}
+
+export const getUsers = (currentPage: number, pageSize: number) => {
+    return (dispatch: Dispatch<ActionsTypes>) => {
+        dispatch(toggleIsFetching(true))
+
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(toggleIsFetching(false))
+                dispatch(setUsers(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+            })
+    }
+}
+
+export const follow = (userId: number) => {
+    return (dispatch: Dispatch<ActionsTypes>) => {
+        dispatch(toggleIsFollowingProgress(true, userId))
+
+        usersAPI.followUser(userId)
+            .then(data => {
+                !data.resultCode && dispatch(followUser(userId))
+
+                dispatch(toggleIsFollowingProgress(false, userId))
+            })
+    }
+}
+
+export const unFollow = (userId: number) => {
+    return (dispatch: Dispatch<ActionsTypes>) => {
+        dispatch(toggleIsFollowingProgress(true, userId))
+
+        usersAPI.unFollowUser(userId)
+            .then(data => {
+                !data.resultCode && dispatch(unFollowUser(userId))
+
+                dispatch(toggleIsFollowingProgress(false, userId))
+            })
+    }
 }

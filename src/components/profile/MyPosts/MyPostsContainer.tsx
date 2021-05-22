@@ -23,15 +23,4 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-// let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
-//     return {
-//         addPost: () => {
-//             dispatch(addPostAC())
-//         },
-//         updateNewPostText: (text: string) => {
-//             dispatch(postChangeAC(text))
-//         }
-//     }
-// }
-
 export const MyPostsContainer = connect(mapStateToProps, {addPost, updateNewPostText}) (MyPosts)
