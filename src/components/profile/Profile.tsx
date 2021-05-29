@@ -1,17 +1,14 @@
 import React from "react";
-import {Wallpaper} from "./Wallpaper/Wallpaper";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
-import {ProfileType} from "../../redux/profile-reducer";
+import {OwnPropsType} from "./ProfileContainer";
 
-type ProfilePropsType = {
-    profile: null | ProfileType
-}
 
-export const Profile = (props: ProfilePropsType) => {
+
+export const Profile = (props: OwnPropsType) => {
+
     return (
         <div>
-            <Wallpaper/>
             <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
         </div>

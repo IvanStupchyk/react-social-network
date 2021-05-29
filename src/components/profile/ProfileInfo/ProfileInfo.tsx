@@ -19,6 +19,7 @@ export const ProfileInfo = (props: ProfileInfoType) => {
             </div>
 
             <div>
+                <ProfileStatus />
                 <p className={s.user_name}>{props.profile.fullName}</p>
                 <p className={s.user_information}>Data of Birth: 7 october</p>
                 <p className={s.user_information}>City: Brest</p>

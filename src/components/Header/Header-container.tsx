@@ -3,6 +3,7 @@ import {Header} from "./Header";
 import {connect} from "react-redux";
 import {getAuthUser} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
+import {compose} from "redux";
 
 type MapDispatchPropsType = {
     getAuthUser: () => void
@@ -38,4 +39,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 
-export default connect(mapStateToProps, {getAuthUser}) (HeaderContainer)
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {getAuthUser})
+)
+(HeaderContainer)
