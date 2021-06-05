@@ -2,9 +2,12 @@ import React from 'react';
 import s from './ProfileInfo.module.scss';
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../../../redux/profile-reducer";
+import {ProfileStatus} from "../ProfileStatus/ProfileStatus";
 
 type ProfileInfoType = {
     profile: null | ProfileType
+    status: string
+    updateStatusUser: (status: string) => void
 }
 
 export const ProfileInfo = (props: ProfileInfoType) => {
@@ -19,8 +22,10 @@ export const ProfileInfo = (props: ProfileInfoType) => {
             </div>
 
             <div>
-                <ProfileStatus />
                 <p className={s.user_name}>{props.profile.fullName}</p>
+                <div>
+                    <ProfileStatus status={props.status} updateStatusUser={props.updateStatusUser}/>
+                </div>
                 <p className={s.user_information}>Data of Birth: 7 october</p>
                 <p className={s.user_information}>City: Brest</p>
                 <p className={s.user_information}>{props.profile.lookingForAJob ? 'Looking for a job' : 'Don\'t looking for a job'}</p>
