@@ -11,10 +11,9 @@ export type MessageType = {
 export type DialogsPageType = {
     messages: Array<MessageType>
     dialogs: Array<DialogType>
-    newMessage: string
 }
 
-type ActionsTypes = addMessageActionType | messageChangeActionType
+type ActionsTypes = addMessageActionType
 
 export let initialState: DialogsPageType = {
     dialogs: [
@@ -25,7 +24,6 @@ export let initialState: DialogsPageType = {
         {id: '5', name: 'Victor'},
         {id: '6', name: 'Valera'}
     ],
-    newMessage: "",
     messages: [
         {id: 1, message: 'Hi'},
         {id: 2, message: 'How is your it-kamasutra?'},
@@ -40,18 +38,12 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
         case 'ADD-MESSAGE':
             const newMessage: MessageType = {
                 id: new Date().getTime(),
-                message: state.newMessage
+                message: action.message
             }
 
             return {
                 ...state,
-                newMessage: '',
                 messages: [...state.messages, newMessage]
-            }
-        case 'UPDATE-MESSAGE-TEXT':
-            return {
-                ...state,
-                newMessage: action.newText
             }
         default:
             return state
@@ -59,16 +51,11 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
 }
 
 export type addMessageActionType = ReturnType<typeof addMessage>
-export const addMessage = () => {
+export const addMessage = (message: string) => {
     return {
-        type: 'ADD-MESSAGE'
+        type: 'ADD-MESSAGE',
+        message
     } as const
 }
 
-export type messageChangeActionType = ReturnType<typeof updateNewMessageBody>
-export const updateNewMessageBody = (newText: string) => {
-    return {
-        type: 'UPDATE-MESSAGE-TEXT',
-        newText: newText
-    } as const
-}
+
