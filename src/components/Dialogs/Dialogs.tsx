@@ -3,6 +3,7 @@ import s from './Dialogs.module.scss';
 import {DialogItem} from "./DialogsItem/DialogsItem";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
+import {Form, Field} from "redux-form";
 
 export const Dialogs = (props: DialogsPropsType) => {
     const dialogsElement = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>)
@@ -22,16 +23,10 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div className={s.messages}>
                 <div>{messageElements}</div>
 
-                <div>
-                    <div>
-                        <textarea value={props.dialogsPage.newMessage} onChange={onMessageChange}/>
-                    </div>
-                    <div>
-                        <button onClick={addMessage}>add</button>
-                    </div>
-                </div>
+
             </div>
         </div>
     )
 }
+
 

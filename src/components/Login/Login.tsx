@@ -1,45 +1,16 @@
 import React from "react";
+import {FormDataType, LoginReduxForm} from "./LoginForm";
 
 export const Login = () => {
+    const onSubmit = (formData: FormDataType) => {
+        console.log(formData)
+    }
+
     return (
         <div>
             <h1>Login</h1>
-            <form>
-                <div>
-                    <input placeholder={'login'}/>
-                </div>
-                <div>
-                    <input placeholder={'password'}/>
-                </div>
-                <div>
-                    <input type={'checkbox'}/>
-                    Remember me
-                </div>
-                <div>
-                    <button>Login</button>
-                </div>
-            </form>
+            <LoginReduxForm onSubmit={onSubmit}/>
         </div>
     )
 }
 
-export const LoginForm = () => {
-    return (
-        <form>
-            <div>
-                <input placeholder={'login'}/>
-            </div>
-            <div>
-                <input placeholder={'password'}/>
-            </div>
-            <div>
-                <input type={'checkbox'}/>
-                Remember me
-            </div>
-            <div>
-                <button>Login</button>
-            </div>
-        </form>
-
-    )
-}
