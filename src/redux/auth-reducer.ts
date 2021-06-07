@@ -1,6 +1,6 @@
-import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {AppThunkType} from "./redux-store";
 
 export type AuthType = {
     resultCode: number
@@ -12,7 +12,7 @@ export type AuthType = {
     isAuth: boolean
 }
 
-type ActionsTypes = setUserDataType
+export type AuthActionsTypes = setUserDataType
 
 let initialState: AuthType = {
     resultCode: 0,
@@ -24,7 +24,7 @@ let initialState: AuthType = {
     isAuth: false
 }
 
-export const AuthReducer = (state: AuthType = initialState, action: ActionsTypes): AuthType => {
+export const AuthReducer = (state: AuthType = initialState, action: AuthActionsTypes): AuthType => {
     switch (action.type) {
         case "SET_USER_DATA":
             return {
@@ -45,7 +45,7 @@ export const setAuthUserData = (id: number | null, email: string | null, login: 
     } as const
 }
 
-export const getAuthUser = () => (dispatch: Dispatch) => {
+export const getAuthUser = (): AppThunkType => (dispatch) => {
     authAPI.getAuthUser()
         .then(data => {
             if (!data.resultCode) {
@@ -55,7 +55,7 @@ export const getAuthUser = () => (dispatch: Dispatch) => {
         })
 }
 
-export const login = (email: string, password: string, rememberMe: boolean) => (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean): AppThunkType => (dispatch) => {
     authAPI.login(email, password, rememberMe)
         .then(res => {
             if (res.data.resultCode === 0) {
@@ -67,7 +67,7 @@ export const login = (email: string, password: string, rememberMe: boolean) => (
         })
 }
 
-export const logout = () => (dispatch: Dispatch) => {
+export const logout = (): AppThunkType => (dispatch) => {
     authAPI.logout()
         .then(res => {
             if (res.data.resultCode === 0) {
