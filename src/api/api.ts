@@ -21,7 +21,7 @@ type getAuthUserType = {
 }
 
 export const usersAPI = {
-    getUsers(currentPage: number = 1, pageSize: number = 1)  {
+    getUsers(currentPage: number = 1, pageSize: number = 1) {
         return instance.get<UsersPageType>(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data)
     },
@@ -37,10 +37,27 @@ export const usersAPI = {
     }
 }
 
+type loginType = {
+    resultCode: number
+    messages: Array<string>
+    data: {
+        userId: number
+    }
+}
+
 export const authAPI = {
     getAuthUser() {
         return instance.get<getAuthUserType>('auth/me')
             .then(response => response.data)
+    },
+
+    login(email: string, password: string, rememberMe: boolean = false) {
+        return instance.post<loginType>('auth/login', {email, password, rememberMe})
+    }
+    ,
+
+    logout() {
+        return instance.delete('auth/login')
     }
 }
 

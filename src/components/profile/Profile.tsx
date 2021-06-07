@@ -9,7 +9,10 @@ export const Profile = (props: OwnPropsType) => {
 
     return (
         <div>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile}
+                         status={props.status}
+                         updateStatusUser={props.updateStatusUser}
+            />
             <MyPostsContainer/>
         </div>
     )

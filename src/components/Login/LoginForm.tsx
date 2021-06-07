@@ -3,20 +3,22 @@ import {Form, InjectedFormProps, reduxForm} from "redux-form";
 import {Field} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
+import s from '../common/FormsControls/FormsControls.module.scss'
 
 export type FormDataType = {
-    login: string
+    email: string
     password: string
     rememberMe: boolean
+    error: string
 }
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
-        <Form onSubmit={props.handleSubmit}>
+        <Form onSubmit={props.handleSubmit} style={{width: '200px'}}>
             <div>
                 <Field
-                    placeholder={'login'}
-                    name={'login'}
+                    placeholder={'email'}
+                    name={'email'}
                     component={Input}
                     validate={[required]}
                 />
@@ -38,6 +40,11 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                 />
                 Remember me
             </div>
+            {   props.error &&
+                <div className={s.formSummaryError}>
+                    {props.error}
+                </div>
+            }
             <div>
                 <button>Login</button>
             </div>
