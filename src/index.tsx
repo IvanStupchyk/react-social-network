@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter} from "react-router-dom";
 import {store} from "./redux/redux-store";
-import {App} from "./App";
 import {Provider} from "react-redux";
+import App from "./App";
 
 ReactDOM.render(
     <React.StrictMode>

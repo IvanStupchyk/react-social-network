@@ -46,7 +46,7 @@ type loginType = {
 }
 
 export const authAPI = {
-    getAuthUser() {
+    me() {
         return instance.get<getAuthUserType>('auth/me')
             .then(response => response.data)
     },

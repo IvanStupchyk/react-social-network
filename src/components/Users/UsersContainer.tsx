@@ -1,14 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {
-    changeCurrentPage, follow, getUsers, unFollow,
-    UserType
-} from "../../redux/users-reducer";
+import {changeCurrentPage, follow, getUsers, unFollow, UserType} from "../../redux/users-reducer";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/AuthRedirect";
 
 class UsersContainer extends React.Component<UsersType, any> {
     componentDidMount(): void {
@@ -55,6 +51,17 @@ type mapDispatchToPropsType = {
 
 export type UsersType = MapStatePropsType & mapDispatchToPropsType
 
+// let mapStateToProps = (state: AppStateType): MapStatePropsType => {
+//     return {
+//         items: state.usersPage.items,
+//         pageSize: state.usersPage.pageSize,
+//         currentPage: state.usersPage.currentPage,
+//         totalCount: state.usersPage.totalCount,
+//         isFetching: state.usersPage.isFetching,
+//         followingInProgress: state.usersPage.followingInProgress
+//     }
+// }
+
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         items: state.usersPage.items,
@@ -72,7 +79,6 @@ export default compose<React.ComponentType>(
         getUsers,
         follow,
         unFollow,
-    }),
-    withAuthRedirect
+    })
 )
 (UsersContainer)

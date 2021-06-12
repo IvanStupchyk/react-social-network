@@ -1,6 +1,7 @@
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {AppThunkType} from "./redux-store";
+import {Dispatch} from "redux";
 
 export type AuthType = {
     resultCode: number
@@ -45,10 +46,10 @@ export const setAuthUserData = (id: number | null, email: string | null, login: 
     } as const
 }
 
-export const getAuthUser = (): AppThunkType => (dispatch) => {
-    authAPI.getAuthUser()
+export const getAuthUser = (): any => (dispatch: Dispatch) => {
+    return authAPI.me()
         .then(data => {
-            if (!data.resultCode) {
+            if (data.resultCode === 0) {
                 let {id, email, login} = data.data
                 dispatch(setAuthUserData(id, email, login, true))
             }
