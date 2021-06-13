@@ -7,7 +7,7 @@ import {RouteComponentProps, withRouter} from "react-router";
 import {compose} from "redux";
 
 type PathParamsType = {
-    userId: string
+    userId: any
 }
 
 type MapStatePropsType = {
@@ -32,7 +32,8 @@ export class ProfileContainer extends React.Component<PropsType, any> {
         let userId = this.props.match.params.userId
 
         if (!userId) {
-            userId = this.props.authorizedUserId ? this.props.authorizedUserId.toString() : '2'
+            // userId = this.props.authorizedUserId ? this.props.authorizedUserId.toString() : '2'
+            userId = this.props.authorizedUserId ? this.props.authorizedUserId.toString() : this.props.history.push('/login')
         }
         this.props.getProfileUser(userId)
         this.props.getStatusUser(userId)
