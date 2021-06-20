@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.scss';
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../../../redux/profile-reducer";
 import {ProfileStatus} from "../ProfileStatus/ProfileStatus";
+import {ProfileStatusWithHooks} from "../ProfileStatus/ProfileStatusWithHooks";
 
 type ProfileInfoType = {
     profile: null | ProfileType
@@ -25,6 +26,7 @@ export const ProfileInfo = (props: ProfileInfoType) => {
                 <p className={s.user_name}>{props.profile.fullName}</p>
                 <div>
                     <ProfileStatus status={props.status} updateStatusUser={props.updateStatusUser}/>
+                    <ProfileStatusWithHooks status={props.status} updateStatusUser={props.updateStatusUser}/>
                 </div>
                 <p className={s.user_information}>Data of Birth: 7 october</p>
                 <p className={s.user_information}>City: Brest</p>
