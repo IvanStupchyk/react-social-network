@@ -16,11 +16,13 @@ import {
 
 class UsersContainer extends React.Component<UsersType, any> {
     componentDidMount(): void {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage, pageSize} = this.props
+        this.props.requestUsers(currentPage, pageSize)
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.requestUsers(pageNumber, this.props.pageSize)
+        const {pageSize} = this.props
+        this.props.requestUsers(pageNumber, pageSize)
 
         this.props.changeCurrentPage(pageNumber)
     }
@@ -58,17 +60,6 @@ type mapDispatchToPropsType = {
 }
 
 export type UsersType = MapStatePropsType & mapDispatchToPropsType
-
-// let mapStateToProps = (state: AppStateType): MapStatePropsType => {
-//     return {
-//         items: state.usersPage.items,
-//         pageSize: state.usersPage.pageSize,
-//         currentPage: state.usersPage.currentPage,
-//         totalCount: state.usersPage.totalCount,
-//         isFetching: state.usersPage.isFetching,
-//         followingInProgress: state.usersPage.followingInProgress
-//     }
-// }
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {

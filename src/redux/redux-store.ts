@@ -35,6 +35,3 @@ export type AppThunkType<ReturnType = void> = ThunkAction<ReturnType,
 export const store = createStore(rootReducer, applyMiddleware(thunk))
 
 
-// @ts-ignore
-window.store = store
-

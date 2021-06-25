@@ -12,9 +12,9 @@ export type FormDataType = {
     error: string
 }
 
-export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
+export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit, error}) => {
     return (
-        <Form onSubmit={props.handleSubmit} style={{width: '200px'}}>
+        <Form onSubmit={handleSubmit} style={{width: '200px'}}>
             <div>
                 <Field
                     placeholder={'email'}
@@ -40,9 +40,9 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                 />
                 Remember me
             </div>
-            {   props.error &&
+            {   error &&
                 <div className={s.formSummaryError}>
-                    {props.error}
+                    {error}
                 </div>
             }
             <div>

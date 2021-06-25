@@ -19,42 +19,34 @@ type getAuthUserType = {
     resultCode: number
     messages: Array<string>
 }
+type responseType<D> = {
+    resultCode: number
+    messages: Array<string>
+    data: D
+}
 
 export const usersAPI = {
     getUsers(currentPage: number = 1, pageSize: number = 1) {
         return instance.get<UsersPageType>(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => response.data)
     },
 
     unFollowUser(userId: number) {
-        return instance.delete(`follow/${userId}`,)
-            .then(response => response.data)
+        return instance.delete<responseType<{}>>(`follow/${userId}`,)
     },
 
     followUser(userId: number) {
-        return instance.post(`follow/${userId}`,)
-            .then(response => response.data)
-    }
-}
-
-type loginType = {
-    resultCode: number
-    messages: Array<string>
-    data: {
-        userId: number
+        return instance.post<responseType<{id: number, email: string, login: string}>>(`follow/${userId}`)
     }
 }
 
 export const authAPI = {
     me() {
         return instance.get<getAuthUserType>('auth/me')
-            .then(response => response.data)
     },
 
     login(email: string, password: string, rememberMe: boolean = false) {
-        return instance.post<loginType>('auth/login', {email, password, rememberMe})
-    }
-    ,
+        return instance.post<responseType<{userId: number}>>('auth/login', {email, password, rememberMe})
+    },
 
     logout() {
         return instance.delete('auth/login')

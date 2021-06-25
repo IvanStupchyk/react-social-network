@@ -1,20 +1,3 @@
-export type DialogType = {
-    id: string
-    name: string
-}
-
-export type MessageType = {
-    id: number
-    message: string
-}
-
-export type DialogsPageType = {
-    messages: Array<MessageType>
-    dialogs: Array<DialogType>
-}
-
-export type DialogsActionsTypes = addMessageActionType
-
 export let initialState: DialogsPageType = {
     dialogs: [
         {id: '1', name: 'Vania'},
@@ -35,27 +18,38 @@ export let initialState: DialogsPageType = {
 
 export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionsTypes): DialogsPageType => {
     switch (action.type) {
-        case 'ADD-MESSAGE':
+        case 'DIALOGS/ADD-MESSAGE':
             const newMessage: MessageType = {
                 id: new Date().getTime(),
                 message: action.message
             }
-
-            return {
-                ...state,
-                messages: [...state.messages, newMessage]
-            }
+            return {...state, messages: [...state.messages, newMessage]}
         default:
             return state
     }
 }
 
-export type addMessageActionType = ReturnType<typeof addMessage>
+//actionC
 export const addMessage = (message: string) => {
     return {
-        type: 'ADD-MESSAGE',
+        type: 'DIALOGS/ADD-MESSAGE',
         message
     } as const
 }
 
+//types
+export type DialogType = {
+    id: string
+    name: string
+}
+export type MessageType = {
+    id: number
+    message: string
+}
+export type DialogsPageType = {
+    messages: Array<MessageType>
+    dialogs: Array<DialogType>
+}
+export type DialogsActionsTypes = addMessageActionType
+export type addMessageActionType = ReturnType<typeof addMessage>
 
