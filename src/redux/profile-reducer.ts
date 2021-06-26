@@ -9,7 +9,7 @@ export let initialState: ProfilePageType = {
         {id: 4, message: 'It\'s my third post', likesCount: 3}
     ],
     profile: null,
-    status: ''
+    status: '',
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionsTypes): ProfilePageType => {
@@ -30,6 +30,9 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
             return {...state, status: action.status}
         case "PROFILE/DELETE-POST":
             return {...state, posts: state.posts.filter(p => p.id !== action.postId)}
+        case "PROFILE/SET-USER-AVATAR":
+            // return {...state, profile: {...state.profile, photos: {...state.profile?.photos}}}
+            return {...state, profile: {...state.profile, photos: {...state.profile?.photos, small: action.image}}}
         default:
             return state
     }
@@ -60,6 +63,12 @@ export const setUserStatus = (status: string) => {
         status
     } as const
 }
+export const savePhotoSuccess = (image: string) => {
+    return {
+        type: 'PROFILE/SET-USER-AVATAR',
+        image
+    } as const
+}
 
 //thunkC
 export const getProfileUser = (userId: string): AppThunkType => async (dispatch) => {
@@ -74,6 +83,13 @@ export const updateStatusUser = (status: string): AppThunkType => async (dispatc
     let response = await profileAPI.updateUserStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setUserStatus(status))
+    }
+}
+
+export const savePhoto = (image: File): AppThunkType => async (dispatch) => {
+    let response = await profileAPI.savePhoto(image)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos.small))
     }
 }
 
@@ -94,27 +110,28 @@ export type ProfileContactsType = {
     mainLink: null
 }
 export type ProfilePhotosType = {
-    small: string
-    large: string
+    small?: string
+    large?: string
 }
 export type ProfileType = {
-    aboutMe: string
-    contacts: ProfileContactsType
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    userId: number
-    photos: ProfilePhotosType
+    aboutMe?: string
+    contacts?: ProfileContactsType
+    lookingForAJob?: boolean
+    lookingForAJobDescription?: string
+    fullName?: string
+    userId?: number
+    photos?: ProfilePhotosType
 }
 export type ProfilePageType = {
     posts: Array<PostType>
-    profile: null | ProfileType
+    profile: ProfileType | null
     status: string
 }
 export type ProfileActionsTypes = AddPostActionType
     | setUserProfileType
     | setUserStatusType
     | deletePostActionType
+    | ReturnType<typeof savePhotoSuccess>
 
 export type AddPostActionType = ReturnType<typeof addPost>
 export type deletePostActionType = ReturnType<typeof deletePost>
