@@ -2,18 +2,11 @@ import React from 'react';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {HashRouter} from "react-router-dom";
-import {store} from "./redux/redux-store";
-import {Provider} from "react-redux";
-import App from "./App";
+import {SocialNetworkApp} from "./App";
 
 ReactDOM.render(
     <React.StrictMode>
-        <HashRouter>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </HashRouter>
+        <SocialNetworkApp />
     </React.StrictMode>,
     document.getElementById('root')
 )

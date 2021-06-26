@@ -1,13 +1,11 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent} from "react";
 
 type MapStatePropsType = {
     status: string
 }
-
 type MapDispatchPropsType = {
     updateStatusUser: (status: string) => void
 }
-
 export type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 
 export class ProfileStatus extends React.Component<OwnPropsType, any> {
@@ -15,7 +13,6 @@ export class ProfileStatus extends React.Component<OwnPropsType, any> {
         editMode: false,
         status: this.props.status
     }
-
 
     activateEditMode = () => {
         this.setState({
@@ -34,7 +31,6 @@ export class ProfileStatus extends React.Component<OwnPropsType, any> {
         this.setState({
             status: e.currentTarget.value
         })
-
     }
 
     componentDidUpdate(prevProps: Readonly<OwnPropsType>, prevState: Readonly<any>, snapshot?: any): void {
@@ -46,7 +42,6 @@ export class ProfileStatus extends React.Component<OwnPropsType, any> {
     }
 
     render(): React.ReactNode {
-
         return (
             <div>
                 {this.state.editMode ?
@@ -63,9 +58,7 @@ export class ProfileStatus extends React.Component<OwnPropsType, any> {
                         <span onDoubleClick={this.activateEditMode}>{this.props.status || '----'}</span>
                     </div>
                 }
-
             </div>
         )
     }
-
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {changeCurrentPage, follow, requestUsers, unFollow, UserType} from "../../redux/users-reducer";
+import {changeCurrentPage, changeStartPage, follow, requestUsers, unFollow, UserType} from "../../redux/users-reducer";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import {compose} from "redux";
@@ -9,7 +9,7 @@ import {
     getCurrentPage,
     getFollowingInProgress,
     getIsFetching,
-    getPageSize,
+    getPageSize, getStartPage,
     getTotalUsersCount,
     getUsersSuper
 } from "../../redux/users-selectors";
@@ -38,6 +38,8 @@ class UsersContainer extends React.Component<UsersType, any> {
                 followingInProgress={this.props.followingInProgress}
                 follow={this.props.follow}
                 unFollow={this.props.unFollow}
+                changeStartPage={this.props.changeStartPage}
+                startPage={this.props.startPage}
             />}
         </>;
     }
@@ -50,6 +52,7 @@ type MapStatePropsType = {
     totalCount: number
     isFetching: boolean
     followingInProgress: Array<number>
+    startPage: number
 }
 
 type mapDispatchToPropsType = {
@@ -57,6 +60,7 @@ type mapDispatchToPropsType = {
     requestUsers: (currentPage: number, pageSize: number) => void
     follow: (userId: number) => void
     unFollow: (userId: number) => void
+    changeStartPage: (pageNumber: number) => void
 }
 
 export type UsersType = MapStatePropsType & mapDispatchToPropsType
@@ -68,7 +72,8 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
         currentPage: getCurrentPage(state),
         totalCount: getTotalUsersCount(state),
         isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state)
+        followingInProgress: getFollowingInProgress(state),
+        startPage: getStartPage(state)
     }
 }
 
@@ -78,6 +83,7 @@ export default compose<React.ComponentType>(
         requestUsers,
         follow,
         unFollow,
+        changeStartPage
     })
 )
 (UsersContainer)

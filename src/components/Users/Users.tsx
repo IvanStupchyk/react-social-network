@@ -12,6 +12,8 @@ type UsersPropsType = {
     followingInProgress: Array<number>
     follow: (userId: number) => void
     unFollow: (userId: number) => void
+    changeStartPage: (pageNumber: number) => void
+    startPage: number
 }
 
 export let Users = (props: UsersPropsType) => {
@@ -29,6 +31,8 @@ export let Users = (props: UsersPropsType) => {
             currentPage={props.currentPage}
             onPageChanged={props.onPageChanged}
             pageSize={props.pageSize}
+            changeStartPage={props.changeStartPage}
+            startPage={props.startPage}
             />
             {
                 props.items.map(u => <div key={u.id}>

@@ -7,6 +7,7 @@ let initialState: UsersPageType = {
     currentPage: 1,
     totalCount: 0,
     isFetching: true,
+    startPage: 1,
     followingInProgress: []
 }
 
@@ -30,6 +31,8 @@ export const UsersReducer = (state: UsersPageType = initialState, action: UserAc
             return {...state, currentPage: action.currentPage}
         case "TOGGLE-IS-FETCHING":
             return {...state, isFetching: action.isFetching}
+        case "CHANGE-START-PAGE":
+            return {...state, startPage: action.pageNumber}
         case "TOGGLE-IS-FOLLOWING-PROGRESS":
             return {
                 ...state,
@@ -86,6 +89,12 @@ export const toggleIsFollowingProgress = (isFollowing: boolean, userId: number) 
         userId
     } as const
 }
+export const changeStartPage = (pageNumber: number) => {
+    return {
+        type: 'CHANGE-START-PAGE',
+        pageNumber
+    } as const
+}
 
 //thunksC
 export const requestUsers = (currentPage: number, pageSize: number): AppThunkType => async (dispatch) => {
@@ -131,6 +140,7 @@ export type UsersPageType = {
     currentPage: number
     totalCount: number
     isFetching: boolean
+    startPage: number
     followingInProgress: Array<number>
 }
 export type UserActionsTypes = followACActionType
@@ -140,6 +150,7 @@ export type UserActionsTypes = followACActionType
     | changeCurrentPageACActionType
     | setIsFetchingType
     | toggleIsFollowingProgressType
+    | ReturnType<typeof changeStartPage>
 
 export type followACActionType = ReturnType<typeof followUser>
 export type unFollowACActionType = ReturnType<typeof unFollowUser>
