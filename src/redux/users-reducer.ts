@@ -102,6 +102,7 @@ export const requestUsers = (currentPage: number, pageSize: number): AppThunkTyp
     dispatch(changeCurrentPage(currentPage))
 
     const response = await usersAPI.getUsers(currentPage, pageSize)
+
     dispatch(toggleIsFetching(false))
     dispatch(setUsers(response.data.items))
     dispatch(setTotalUsersCount(response.data.totalCount))

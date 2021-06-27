@@ -1,5 +1,6 @@
 import axios from "axios";
 import {ProfileType} from "../redux/profile-reducer";
+import {UsersPageType} from "../redux/users-reducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -22,7 +23,7 @@ type responseType<D> = {
 
 export const usersAPI = {
     getUsers(currentPage: number = 1, pageSize: number = 1) {
-        return instance.get<responseType<genericDataType>>(`users?page=${currentPage}&count=${pageSize}`)
+        return instance.get<UsersPageType>(`users?page=${currentPage}&count=${pageSize}`)
     },
     unFollowUser(userId: number) {
         return instance.delete<responseType<{}>>(`follow/${userId}`,)
