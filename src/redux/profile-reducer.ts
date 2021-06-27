@@ -1,5 +1,6 @@
 import {profileAPI} from "../api/api";
 import {AppThunkType} from "./redux-store";
+import {stopSubmit} from "redux-form";
 
 export let initialState: ProfilePageType = {
     posts: [
@@ -31,8 +32,9 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
         case "PROFILE/DELETE-POST":
             return {...state, posts: state.posts.filter(p => p.id !== action.postId)}
         case "PROFILE/SET-USER-AVATAR":
-            // return {...state, profile: {...state.profile, photos: {...state.profile?.photos}}}
-            return {...state, profile: {...state.profile, photos: {...state.profile?.photos, small: action.image}}}
+            return state.profile !== null
+                ? {...state, profile: {...state.profile, photos: {...state.profile.photos, small: action.image}}}
+                : {...state}
         default:
             return state
     }
@@ -72,24 +74,38 @@ export const savePhotoSuccess = (image: string) => {
 
 //thunkC
 export const getProfileUser = (userId: string): AppThunkType => async (dispatch) => {
-    let response = await profileAPI.getProfileUser(userId)
+    const response = await profileAPI.getProfileUser(userId)
     dispatch(setUserProfile(response.data))
 }
 export const getStatusUser = (userId: string): AppThunkType => async (dispatch) => {
-    let response = await profileAPI.getUserStatus(userId)
+    const response = await profileAPI.getUserStatus(userId)
     dispatch(setUserStatus(response.data))
 }
 export const updateStatusUser = (status: string): AppThunkType => async (dispatch) => {
-    let response = await profileAPI.updateUserStatus(status)
+    const response = await profileAPI.updateUserStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setUserStatus(status))
     }
 }
-
 export const savePhoto = (image: File): AppThunkType => async (dispatch) => {
-    let response = await profileAPI.savePhoto(image)
+    const response = await profileAPI.savePhoto(image)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos.small))
+    }
+}
+export const saveProfile = (profile: ProfileType): AppThunkType => async (dispatch, getState) => {
+    const startUserId = getState().auth.id?.toString()
+    const userId = startUserId !== undefined ? startUserId : '1'
+
+    const response = await profileAPI.saveProfile(profile)
+    if (response.data.resultCode === 0) {
+        dispatch(getProfileUser(userId))
+    } else {
+        const filedError = response.data.messages[0].split('Contacts->')[1]
+        const correctFieldError = filedError.substring(0, filedError.length - 1).toLowerCase()
+
+        dispatch(stopSubmit('edit-profile', {_error: correctFieldError}))
+        return Promise.reject(`Incorrect field: ${correctFieldError}`)
     }
 }
 
@@ -101,39 +117,34 @@ export type PostType = {
 }
 export type ProfileContactsType = {
     facebook: string
-    website: null
+    website: string
     vk: string
     twitter: string
     instagram: string
-    youtube: null
+    youtube: string
     github: string
-    mainLink: null
+    mainLink: string
 }
 export type ProfilePhotosType = {
-    small?: string
-    large?: string
+    small: string
+    large: string
 }
 export type ProfileType = {
-    aboutMe?: string
-    contacts?: ProfileContactsType
-    lookingForAJob?: boolean
-    lookingForAJobDescription?: string
-    fullName?: string
-    userId?: number
-    photos?: ProfilePhotosType
+    aboutMe: string
+    contacts: ProfileContactsType
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number
+    photos: ProfilePhotosType
 }
 export type ProfilePageType = {
     posts: Array<PostType>
     profile: ProfileType | null
     status: string
 }
-export type ProfileActionsTypes = AddPostActionType
-    | setUserProfileType
-    | setUserStatusType
-    | deletePostActionType
+export type ProfileActionsTypes = ReturnType<typeof addPost>
+    | ReturnType<typeof setUserProfile>
+    | ReturnType<typeof setUserStatus>
+    | ReturnType<typeof deletePost>
     | ReturnType<typeof savePhotoSuccess>
-
-export type AddPostActionType = ReturnType<typeof addPost>
-export type deletePostActionType = ReturnType<typeof deletePost>
-export type setUserProfileType = ReturnType<typeof setUserProfile>
-export type setUserStatusType = ReturnType<typeof setUserStatus>

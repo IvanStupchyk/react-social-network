@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import s from "./Paginator.module.scss";
-import Pagination from "react-js-pagination";
-import {Users} from "../../Users/Users";
 
 type UsersPropsType = {
     totalCount: number

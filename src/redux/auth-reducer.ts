@@ -32,24 +32,24 @@ export const setAuthUserData = (id: number | null, email: string | null, login: 
 
 //thunkC
 export const getAuthUser = (): any => async (dispatch: Dispatch) => {
-    let response = await authAPI.me()
+    const response = await authAPI.me()
     if (response.data.resultCode === 0) {
-        let {id, email, login} = response.data.data
+        const {id, email, login} = response.data.data
         dispatch(setAuthUserData(id, email, login, true))
     }
 }
 export const login = (email: string, password: string, rememberMe: boolean): AppThunkType => async (dispatch) => {
-    let response = await authAPI.login(email, password, rememberMe)
+    const response = await authAPI.login(email, password, rememberMe)
 
     if (response.data.resultCode === 0) {
         dispatch(getAuthUser())
     } else {
-        let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+        const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
         dispatch(stopSubmit('login', {_error: message}))
     }
 }
 export const logout = (): AppThunkType => async (dispatch) => {
-    let response = await authAPI.logout()
+    const response = await authAPI.logout()
 
     if (response.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false))

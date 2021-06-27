@@ -1,40 +1,66 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import s from './ProfileInfo.module.scss';
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../../../redux/profile-reducer";
-import {ProfileStatus} from "../ProfileStatus/ProfileStatus";
-import {ProfileStatusWithHooks} from "../ProfileStatus/ProfileStatusWithHooks";
 import userPhoto from "../../../images/userPhoto.png";
+import {ProfileData} from "./ProfileData/ProfileData";
+import {ProfileDataFormReduxForm} from "./ProfileDataForm/ProfileDataForm";
 
 type ProfileInfoType = {
     profile: null | ProfileType
     status: string
     updateStatusUser: (status: string) => void
+    isOwner: boolean
+    savePhoto: (filePhoto: File) => void
+    saveProfile: (profile: ProfileType) => Promise<any>
 }
 
-export const ProfileInfo = ({profile, status, updateStatusUser}: ProfileInfoType) => {
+export const ProfileInfo = ({profile, status, updateStatusUser, isOwner, savePhoto, saveProfile}: ProfileInfoType) => {
+    const [editMode, setEditMode] = useState<boolean>(false)
+
     if (!profile) {
         return <Preloader/>
+    }
+
+    const goToEditMode = () => {
+        setEditMode(true)
+    }
+
+    const onSubmit = (profile: ProfileType) => {
+        saveProfile(profile).then(
+            () => setEditMode(false)
+        )
+    }
+
+    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files?.length) {
+            savePhoto(e.target.files[0])
+        }
     }
 
     return (
         <div className={s.profile_information_container}>
             <div className={s.ava_container}>
-                <img alt={'user avatar'} src={profile.photos.small !== null ? profile.photos.small : userPhoto} />
+                <img alt={'user avatar'} src={profile.photos ? profile.photos.small : userPhoto}/>
+                {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
             </div>
 
-            <div>
-                <p className={s.user_name}>{profile.fullName}</p>
-                <div>
-                    <ProfileStatus status={status} updateStatusUser={updateStatusUser}/>
-                    <ProfileStatusWithHooks status={status} updateStatusUser={updateStatusUser}/>
-                </div>
-                <p className={s.user_information}>Data of Birth: 7 october</p>
-                <p className={s.user_information}>City: Brest</p>
-                <p className={s.user_information}>{profile.lookingForAJob ? 'Looking for a job' : 'Don\'t looking for a job'}</p>
-                <p className={s.user_information}>Education: GGTU'15</p>
-                <p className={s.user_information}>Web Site: {profile.contacts.facebook}</p>
-            </div>
+            {editMode
+                ? <ProfileDataFormReduxForm
+                    onSubmit={onSubmit}
+                    profile={profile}
+                    initialValues={profile}
+                />
+                : <ProfileData
+                    profile={profile}
+                    status={status}
+                    updateStatusUser={updateStatusUser}
+                    isOwner={isOwner}
+                    goToEditMode={goToEditMode}
+                />
+            }
         </div>
     )
 }
+
+

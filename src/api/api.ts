@@ -1,5 +1,4 @@
 import axios from "axios";
-import {UsersPageType} from "../redux/users-reducer";
 import {ProfileType} from "../redux/profile-reducer";
 
 const instance = axios.create({
@@ -10,14 +9,10 @@ const instance = axios.create({
     }
 })
 
-type getAuthUserType = {
-    data: {
-        id: number
-        email: string
-        login: string
-    }
-    resultCode: number
-    messages: Array<string>
+type genericDataType = {
+    id: number
+    email: string
+    login: string
 }
 type responseType<D> = {
     resultCode: number
@@ -27,29 +22,25 @@ type responseType<D> = {
 
 export const usersAPI = {
     getUsers(currentPage: number = 1, pageSize: number = 1) {
-        return instance.get<UsersPageType>(`users?page=${currentPage}&count=${pageSize}`)
+        return instance.get<responseType<genericDataType>>(`users?page=${currentPage}&count=${pageSize}`)
     },
-
     unFollowUser(userId: number) {
         return instance.delete<responseType<{}>>(`follow/${userId}`,)
     },
-
     followUser(userId: number) {
-        return instance.post<responseType<{id: number, email: string, login: string}>>(`follow/${userId}`)
+        return instance.post<responseType<genericDataType>>(`follow/${userId}`)
     }
 }
 
 export const authAPI = {
     me() {
-        return instance.get<getAuthUserType>('auth/me')
+        return instance.get<responseType<genericDataType>>('auth/me')
     },
-
     login(email: string, password: string, rememberMe: boolean = false) {
         return instance.post<responseType<{userId: number}>>('auth/login', {email, password, rememberMe})
     },
-
     logout() {
-        return instance.delete('auth/login')
+        return instance.delete<responseType<{}>>('auth/login')
     }
 }
 
@@ -57,15 +48,12 @@ export const profileAPI = {
     getProfileUser(userId: string) {
         return instance.get<ProfileType>(`profile/${userId}`)
     },
-
     getUserStatus(userId: string) {
         return instance.get(`profile/status/${userId}`)
     },
-
     updateUserStatus(status: string) {
-        return instance.put('profile/status', {status})
+        return instance.put<responseType<{}>>('profile/status', {status})
     },
-
     savePhoto(image: File) {
         const formData = new FormData()
         formData.append('image', image)
@@ -75,6 +63,15 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    saveProfile(profile: ProfileType) {
+        return instance.put<responseType<{}>>('profile', profile)
+    }
+}
+
+export const securityAPI = {
+    getCaptchaUrl() {
+        return instance.get('security/get-captcha-url')
     }
 }
 

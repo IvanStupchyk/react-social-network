@@ -101,7 +101,7 @@ export const requestUsers = (currentPage: number, pageSize: number): AppThunkTyp
     dispatch(toggleIsFetching(true))
     dispatch(changeCurrentPage(currentPage))
 
-    let response = await usersAPI.getUsers(currentPage, pageSize)
+    const response = await usersAPI.getUsers(currentPage, pageSize)
     dispatch(toggleIsFetching(false))
     dispatch(setUsers(response.data.items))
     dispatch(setTotalUsersCount(response.data.totalCount))
@@ -109,14 +109,14 @@ export const requestUsers = (currentPage: number, pageSize: number): AppThunkTyp
 export const follow = (userId: number): AppThunkType => async (dispatch) => {
     dispatch(toggleIsFollowingProgress(true, userId))
 
-    let response = await usersAPI.followUser(userId)
+    const response = await usersAPI.followUser(userId)
     !response.data.resultCode && dispatch(followUser(userId))
     dispatch(toggleIsFollowingProgress(false, userId))
 }
 export const unFollow = (userId: number): AppThunkType => async (dispatch) => {
     dispatch(toggleIsFollowingProgress(true, userId))
 
-    let response = await usersAPI.unFollowUser(userId)
+    const response = await usersAPI.unFollowUser(userId)
     !response.data.resultCode && dispatch(unFollowUser(userId))
     dispatch(toggleIsFollowingProgress(false, userId))
 }
@@ -143,19 +143,11 @@ export type UsersPageType = {
     startPage: number
     followingInProgress: Array<number>
 }
-export type UserActionsTypes = followACActionType
-    | unFollowACActionType
-    | setUsersACActionType
-    | setTotalUsersCountACActionType
-    | changeCurrentPageACActionType
-    | setIsFetchingType
-    | toggleIsFollowingProgressType
+export type UserActionsTypes = ReturnType<typeof followUser>
+    | ReturnType<typeof unFollowUser>
+    | ReturnType<typeof setUsers>
+    | ReturnType<typeof setTotalUsersCount>
+    | ReturnType<typeof changeCurrentPage>
+    | ReturnType<typeof toggleIsFetching>
+    | ReturnType<typeof toggleIsFollowingProgress>
     | ReturnType<typeof changeStartPage>
-
-export type followACActionType = ReturnType<typeof followUser>
-export type unFollowACActionType = ReturnType<typeof unFollowUser>
-export type setUsersACActionType = ReturnType<typeof setUsers>
-export type setTotalUsersCountACActionType = ReturnType<typeof setTotalUsersCount>
-export type changeCurrentPageACActionType = ReturnType<typeof changeCurrentPage>
-export type setIsFetchingType = ReturnType<typeof toggleIsFetching>
-export type toggleIsFollowingProgressType = ReturnType<typeof toggleIsFollowingProgress>

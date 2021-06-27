@@ -23,7 +23,7 @@ export const setInitializedData = () => {
 
 //thunkC
 export const initializeApp = (): AppThunkType => (dispatch) => {
-    let promise = dispatch(getAuthUser())
+    const promise = dispatch(getAuthUser())
 
     promise.then(() => {
         dispatch(setInitializedData())
