@@ -1,5 +1,5 @@
 import React from "react";
-import {ProfileContactsType, ProfileType} from "../../../../redux/profile-reducer";
+import {ProfileType} from "../../../../redux/profile-reducer";
 import {Field, Form, InjectedFormProps, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../../common/FormsControls/FormsControls";
 import {required} from "../../../../utils/validators/validators";

@@ -29,7 +29,7 @@ type MapDispatchPropsType = {
     getStatusUser: (userId: string) => void
     updateStatusUser: (status: string) => void
     savePhoto: (filePhoto: File) => void
-    saveProfile: (profile: ProfileType) => void
+    saveProfile: (profile: ProfileType) => Promise<any>
 }
 
 export type ProfilePropsType = MapStatePropsType & MapDispatchPropsType & {isOwner: boolean}

@@ -11,7 +11,7 @@ type HeaderPropsType = {
 export const Header = (props: HeaderPropsType) => {
     return (
         <header className={s.header}>
-            <img alt={'logo'} src='https://www.logodesign.net/images/nature-logo.png' />
+            {/*<img alt={'logo'} src='https://www.logodesign.net/images/nature-logo.png' />*/}
 
             <div className={s.loginBlock}>
                 {   props.isAuth

@@ -7,15 +7,17 @@ import { Redirect } from "react-router-dom";
 
 type MapStatePropsType = {
     isAuth: boolean
+    captchaUrl: null | string
 }
 
 type MapDispatchPropsType = {
-    login: (email: string, password: string, rememberMe: boolean) => void
+    login: (email: string, password: string, rememberMe: boolean, captcha: string) => void
 }
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 
@@ -23,9 +25,9 @@ type PropsType = MapDispatchPropsType & MapStatePropsType
 
 const Login = (props: PropsType) => {
     const onSubmit = (formData: FormDataType) => {
-        const {email, password, rememberMe} = formData
+        const {email, password, rememberMe, captcha} = formData
 
-        props.login(email, password, rememberMe)
+        props.login(email, password, rememberMe, captcha)
     }
 
     if (props.isAuth) {
@@ -35,7 +37,7 @@ const Login = (props: PropsType) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
 }

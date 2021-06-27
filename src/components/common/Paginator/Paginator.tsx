@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import s from "./Paginator.module.scss";
+import cn from 'classnames'
 
 type UsersPropsType = {
     totalCount: number
@@ -33,7 +34,9 @@ export let Paginator = ({totalCount, pageSize, currentPage, portionSize = 10, on
                         onPageChanged(p)
                         changeStartPage(portionNumber)
                     }}
-                                    className={`${currentPage === p && s.selectedPage}`}>{p}</span>)
+                                    className={cn({
+                                        [s.selectedPage]: currentPage === p
+                                    })}>{p}</span>)
             }
             {portionCount > portionNumber &&
                 <button onClick={() => setPortionNumber(portionNumber + 1)}>next</button>}
