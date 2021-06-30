@@ -5,6 +5,12 @@ import {ProfileType} from "../../../redux/profile-reducer";
 import userPhoto from "../../../images/userPhoto.png";
 import {ProfileData} from "./ProfileData/ProfileData";
 import {ProfileDataFormReduxForm} from "./ProfileDataForm/ProfileDataForm";
+import {ProfileStatus} from "../ProfileStatus/ProfileStatus"
+import pencilEdit from '../../../images/icons/pencilEdit.svg'
+import checkMark from '../../../images/icons/checkMark.svg'
+import uncheckMark from '../../../images/icons/uncheckMark.svg'
+import {MyPostsContainer} from "../MyPosts/MyPostsContainer";
+
 
 type ProfileInfoType = {
     profile: null | ProfileType
@@ -39,26 +45,55 @@ export const ProfileInfo = ({profile, status, updateStatusUser, isOwner, savePho
     }
 
     return (
-        <div className={s.profile_information_container}>
-            <div className={s.ava_container}>
-                <img alt={'user avatar'} src={profile.photos ? profile.photos.small : userPhoto}/>
-                {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
+        <div className={s.profileInformationContainer}>
+            <div className={s.mainProfileInfo}>
+                <div className={s.leftBlockMainProfileInfo}>
+                    <div className={s.avaContainer}>
+                        <img alt={'user avatar'} src={profile.photos ? profile.photos.small : userPhoto}/>
+                    </div>
+                    <div>
+                        <div className={s.topBlockMainProfileInfo}>
+                            <p className={s.userName}>{profile.fullName}</p>
+                            <div className={s.searchJobStatus}>
+                                {profile.lookingForAJob
+                                    ? <img src={checkMark} alt={'check mark'}/>
+                                    : <img src={uncheckMark} alt={'uncheck mark'}/>} Looking for a job
+                            </div>
+                        </div>
+                        <ProfileStatus status={status} updateStatusUser={updateStatusUser}/>
+                    </div>
+                </div>
+                {isOwner &&
+                <div>
+                    <div className={s.btnEditProfile} onClick={goToEditMode}>
+                        <img alt={'edit pencil'} src={pencilEdit}/>
+                        <button>edit</button>
+                    </div>
+                    <div>
+                        <input className={s.inputAddUserPhoto} type={'file'} id={'file'}
+                               onChange={onMainPhotoSelected}/>
+                        <label htmlFor={'file'} className={s.addUserPhoto}>add photo</label>
+                    </div>
+                </div>
+                }
+
             </div>
 
-            {editMode
-                ? <ProfileDataFormReduxForm
-                    onSubmit={onSubmit}
-                    profile={profile}
-                    initialValues={profile}
-                />
-                : <ProfileData
-                    profile={profile}
-                    status={status}
-                    updateStatusUser={updateStatusUser}
-                    isOwner={isOwner}
-                    goToEditMode={goToEditMode}
-                />
-            }
+            <div className={s.bottomInfoBlock}>
+                <div className={s.userContacts}>
+                    {editMode
+                        ? <ProfileDataFormReduxForm
+                            onSubmit={onSubmit}
+                            profile={profile}
+                            initialValues={profile}
+                        />
+                        : <ProfileData
+                            profile={profile}
+                        />
+                    }
+                </div>
+                <MyPostsContainer/>
+            </div>
         </div>
     )
 }

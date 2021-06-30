@@ -35,7 +35,6 @@ export const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDat
                     name={'lookingForAJob'}
                     type={'checkbox'}
                     component={Input}
-                    validate={[required]}
                 />
             </div>
             <div><b>My professional skills:</b>

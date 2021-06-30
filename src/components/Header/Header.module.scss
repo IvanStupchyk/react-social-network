@@ -1,16 +1,8 @@
 .header {
-    padding: 5px;
-    grid-area: h;
-    background-color: green;
-}
-
-.header img {
-    width: 20px;
-}
-
-.loginBlock {
-    float: right;
-    a {
-        color: white;
-    }
+    width: 100%;
+    height: 200px;
+    border-radius: 0 0 6px 6px;
+    background-image: url("../../images/background/backgroundHeader.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -1,16 +1,39 @@
 .nav {
-  padding: 20px;
-  grid-area: n;
-  background-color: burlywood;
+  padding: 20px 0 0 0 ;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #E5E5E5;
+}
+
+.pagesLinksContainer {
+  display: flex;
 }
 
 .item {
+  margin-right: 25px;
+  margin-bottom: -2px;
+
   a {
-    color: #fff;
-    text-decoration: none;
+
+    max-width: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #66676B;
+    height: 60px;
+    border-bottom: 2px solid #E5E5E5;
+    transition: .2s;
     &.activeLink {
-      color: gold;
+      color: #0572EF;
+      border-bottom: 2px solid #0572EF;
     }
+  }
+
+  .settingsBtn {
+    color: #000;
   }
 }
 
@@ -20,4 +43,70 @@
 
 .title_friend {
   font-size: 18px;
+}
+
+.settingsBtn {
+  padding: 3px;
+  margin-right: 12px;
+  box-sizing: border-box;
+  width: 120px;
+  height: 35px;
+  border-radius: 6px;
+  background-color: #E5E6EB;
+
+  img {
+    margin-right: 5px;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #66676B;
+    &.activeLink {
+      color: #0572EF;
+    }
+  }
+}
+
+.btnsHeaderContainer {
+  display: flex;
+}
+
+.logInOutBtn {
+  width: 103px;
+  height: 35px;
+  border-radius: 6px;
+  background-color: #0572EF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button, a {
+    color: #fff;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    margin-right: 5px;
+  }
+}
+
+.logOutBtnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnLogInOutContent {
+  width: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

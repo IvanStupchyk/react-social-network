@@ -1,4 +1,5 @@
 import React, {ChangeEvent} from "react";
+import s from './ProfileStatus.module.scss'
 
 type MapStatePropsType = {
     status: string
@@ -55,7 +56,7 @@ export class ProfileStatus extends React.Component<OwnPropsType, any> {
                     </div>
                     :
                     <div>
-                        <span onDoubleClick={this.activateEditMode}>{this.props.status || '----'}</span>
+                        <span className={s.profileStatus} onDoubleClick={this.activateEditMode}>{this.props.status || '----'}</span>
                     </div>
                 }
             </div>

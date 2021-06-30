@@ -67,6 +67,7 @@ export class ProfileContainer extends React.Component<PropsType, any> {
                 status={this.props.status}
                 updateStatusUser={this.props.updateStatusUser}
                 savePhoto={this.props.savePhoto}
+                isAuth={this.props.isAuth}
             />
         )
     }

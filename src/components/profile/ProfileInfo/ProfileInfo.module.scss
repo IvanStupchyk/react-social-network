@@ -1,33 +1,102 @@
-.profile_information_container {
-  padding: 10px;
+.profileInformationContainer {
+  padding-top: 40px;
+}
+
+.mainProfileInfo {
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #E5E5E5;
+}
+
+.leftBlockMainProfileInfo {
+  display: flex;
+  align-items: center;
+}
+
+.topBlockMainProfileInfo {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.bottomInfoBlock {
+  padding-top: 30px;
+  background-color: #F1F2F5;
   display: flex;
 }
 
-.user_name {
-  margin: 0 0 20px 0;
-  font-size: 18px;
+.userName {
+  margin-right: 50px;
+  font-size: 28px;
   font-weight: bold;
 }
 
-.user_information {
-  margin: 0;
-  font-size: 13px;
-}
-
-.ava_container {
+.avaContainer {
+  width: 120px;
   margin-right: 40px;
-  height: 100px;
-  width: 100px;
 
   img {
+    border-radius: 50%;
     width: 100%;
-    height: 100%;
     object-fit: cover;
     object-position: center;
   }
 }
 
+.btnEditProfile, .addUserPhoto {
+  padding: 3px;
+  height: 35px;
+  width: 100px;
+  border-radius: 6px;
+  background-color: #F9F9F9;
+  color: #8C939C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .2s;
 
+  &:hover {
+    background-color: #e8e8e8;
+    cursor: pointer;
+    color: #000;
+  }
+}
+
+.btnEditProfile {
+  margin-bottom: 10px;
+  button {
+    color: #8C939C;
+  }
+
+  &:hover button {
+    color: #000;
+  }
+
+}
+
+.searchJobStatus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0572EF;
+
+  img {
+    margin-right: 10px;
+  }
+}
+
+.inputAddUserPhoto {
+  display: none;
+}
+
+.userContacts {
+  max-width: 370px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 5px 2px 1px rgba(0, 0, 0, 0.2);
+}
 
 
 

@@ -1,9 +1,9 @@
 import React from "react";
-import {Header} from "./Header";
 import {connect} from "react-redux";
 import {logout} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {compose} from "redux";
+import {Navbar} from "./Navbar";
 
 type MapDispatchPropsType = {
     logout: () => void
@@ -11,10 +11,10 @@ type MapDispatchPropsType = {
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 
-class HeaderContainer extends React.Component<OwnPropsType, any> {
+class NavbarContainer extends React.Component<OwnPropsType, any> {
     render(): React.ReactNode {
         return (
-            <Header
+            <Navbar
                 isAuth = {this.props.isAuth}
                 login={this.props.login}
                 logout={this.props.logout}
@@ -39,4 +39,4 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {logout})
 )
-(HeaderContainer)
+(NavbarContainer)

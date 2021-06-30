@@ -12,7 +12,7 @@ export const MyPosts = (props: MyPostsType) => {
     }
 
     return (
-        <div className={s.posts_container}>
+        <div className={s.postsContainer}>
             <h3 className={s.title_posts}>My posts</h3>
 
             <AddPostReduxForm onSubmit={addPostMessage}/>

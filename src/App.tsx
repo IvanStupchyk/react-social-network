@@ -5,15 +5,15 @@ import {Friends} from "./components/Friends/Friends";
 import {Settings} from "./components/Settings/Settings";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
-import {Navbar} from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import HeaderContainer from "./components/Header/Header-container";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
 import {initializeApp} from "./redux/app-reducer";
 import {AppStateType} from "./redux/redux-store";
 import {Preloader} from "./components/common/Preloader/Preloader";
+import {Header} from "./components/Header/Header";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'))
@@ -41,8 +41,8 @@ export class App extends Component<OwnPropsType, any> {
 
         return (
             <div className="app-wrapper">
-                <HeaderContainer/>
-                <Navbar/>
+                <Header />
+                <NavbarContainer />
 
                 <div className="app-wrapper-content">
                     <Suspense fallback={<Preloader/>}>
@@ -53,8 +53,8 @@ export class App extends Component<OwnPropsType, any> {
                             <Route path={"/users"} render={() => <UsersContainer/>}/>
                             <Route path={"/music"} render={() => <Music/>}/>
                             <Route path={"/news"} render={() => <News/>}/>
-                            <Route path={"/settings"} render={() => <Settings/>}/>
                             <Route path={"/friends"} render={() => <Friends/>}/>
+                            <Route path={"/settings"} render={() => <Settings/>}/>
                             <Route path={"/login"} render={() => <Login/>}/>
                             <Route path={"*"} render={() => <div>404. PAGE NOT FOUND</div>}/>
                         </Switch>
