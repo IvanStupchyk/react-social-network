@@ -35,6 +35,10 @@ html {
     overflow-y: scroll;
 }
 
+textarea {
+    resize: none;
+}
+
 main {
     display: block;
 }
