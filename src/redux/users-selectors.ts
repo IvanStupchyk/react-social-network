@@ -33,3 +33,7 @@ export const getFollowingInProgress = (state: AppStateType) => {
 export const getStartPage = (state: AppStateType) => {
     return state.usersPage.startPage
 }
+
+export const getIsAuth = (state: AppStateType) => {
+    return state.auth.isAuth
+}

@@ -3,6 +3,7 @@ import {UserType} from "../../redux/users-reducer";
 import {Paginator} from "../common/Paginator/Paginator";
 import {User} from "./User";
 import s from "./User.module.scss";
+import {Redirect} from "react-router-dom";
 
 type UsersPropsType = {
     totalCount: number
@@ -15,6 +16,7 @@ type UsersPropsType = {
     unFollow: (userId: number) => void
     changeStartPage: (pageNumber: number) => void
     startPage: number
+    isAuth: boolean
 }
 
 export let Users = (props: UsersPropsType) => {
@@ -23,6 +25,10 @@ export let Users = (props: UsersPropsType) => {
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
+    }
+
+    if (!props.isAuth) {
+        return <Redirect to={'/login'}/>
     }
 
     return (

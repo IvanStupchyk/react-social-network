@@ -7,7 +7,7 @@ import {Preloader} from "../common/Preloader/Preloader";
 import {compose} from "redux";
 import {
     getCurrentPage,
-    getFollowingInProgress,
+    getFollowingInProgress, getIsAuth,
     getIsFetching,
     getPageSize, getStartPage,
     getTotalUsersCount,
@@ -40,6 +40,7 @@ class UsersContainer extends React.Component<UsersType, any> {
                 unFollow={this.props.unFollow}
                 changeStartPage={this.props.changeStartPage}
                 startPage={this.props.startPage}
+                isAuth={this.props.isAuth}
             />}
         </>;
     }
@@ -53,6 +54,7 @@ type MapStatePropsType = {
     isFetching: boolean
     followingInProgress: Array<number>
     startPage: number
+    isAuth: boolean
 }
 
 type mapDispatchToPropsType = {
@@ -73,7 +75,8 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
         totalCount: getTotalUsersCount(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
-        startPage: getStartPage(state)
+        startPage: getStartPage(state),
+        isAuth:  getIsAuth(state)
     }
 }
 
