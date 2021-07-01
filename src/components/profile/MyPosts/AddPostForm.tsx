@@ -12,19 +12,17 @@ const maxLength30 = maxLengthCreator(20)
 
 export const AddPostForm: React.FC<InjectedFormProps<addPostFormType>> = (props) => {
     return (
-        <Form onSubmit={props.handleSubmit}>
+        <Form onSubmit={props.handleSubmit} className={s.addPostBlock}>
+            <button className={s.btnCreatePost}>Create post</button>
             <div>
                 <Field
-                    className={s.input_news}
+                    className={s.addPostForm}
                     component={Textarea}
                     name={'postMessage'}
-                    placeholder={'post message'}
+                    placeholder={''}
+                    maxLength={40}
                     validate={[required, maxLength30]}
                 />
-            </div>
-
-            <div>
-                <button>Add post</button>
             </div>
         </Form>
     )

@@ -102,7 +102,7 @@ export const saveProfile = (profile: ProfileType): AppThunkType => async (dispat
         dispatch(getProfileUser(userId))
     } else {
         const filedError = response.data.messages[0].split('Contacts->')[1]
-        const correctFieldError = filedError.substring(0, filedError.length - 1).toLowerCase()
+        const correctFieldError = filedError ? filedError.substring(0, filedError.length - 1).toLowerCase() : 'some error'
 
         dispatch(stopSubmit('edit-profile', {_error: correctFieldError}))
         return Promise.reject(`Incorrect field: ${correctFieldError}`)

@@ -5,7 +5,7 @@ import {MyPostsType} from "./MyPostsContainer";
 import {addPostFormType, AddPostReduxForm} from "./AddPostForm";
 
 export const MyPosts = (props: MyPostsType) => {
-    const postsElements = props.posts.map(p => <Post message={p.message} key={p.id} likesCount={p.likesCount}/>)
+    const postsElements = props.posts.map(p => <Post message={p.message} key={p.id} likesCount={p.likesCount} profile={props.profile}/>)
 
     const addPostMessage = (value: addPostFormType) => {
         props.addPost(value.postMessage)
@@ -13,8 +13,6 @@ export const MyPosts = (props: MyPostsType) => {
 
     return (
         <div className={s.postsContainer}>
-            <h3 className={s.title_posts}>My posts</h3>
-
             <AddPostReduxForm onSubmit={addPostMessage}/>
 
             <div className={s.posts}>

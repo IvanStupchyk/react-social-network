@@ -1,12 +1,13 @@
 .formControl {
   display: flex;
   flex-direction: column;
-  max-width: 200px;
   width: 100%;
+
   &.error {
     input, textarea {
       border: 1px solid red;
     }
+
     span {
       color: red;
     }
@@ -14,26 +15,54 @@
 }
 
 .formSummaryError {
-  padding: 5px;
-  border: 1px red solid;
+  height: 20px;
   color: red;
 }
 
-.btnSaveProfileInfo{
+.btnSaveProfileInfo {
   padding: 3px;
   height: 30px;
-  width: 70px;
+  width: 85px;
   border-radius: 6px;
   background-color: #e0e0e0;
-  color: #8C939C;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #0572EF;
   transition: .2s;
+  background-image: url("../../../images/icons/doubleCheckMark.svg");
+  background-repeat: no-repeat;
+  background-position: 7px;
 
+  span {
+    margin-left: 15px;
+  }
   &:hover {
-    background-color: #e8e8e8;
-    cursor: pointer;
-    color: #000;
+    background-color: #E9F3FE;
+  }
+}
+
+.fullNameAndSaveBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.EditPersonalInformation {
+  input, textarea {
+    background-color: #F1F2F5;
+    border-radius: 6px;
+    border: none;
+  }
+}
+
+.marginBottomForSections, .lookingForAJob {
+  margin-bottom: 10px;
+}
+
+.lookingForAJob {
+  display: flex;
+  align-items: center;
+
+  b {
+    margin-right: 15px;
+    width: 300px;
   }
 }

@@ -1,26 +1,43 @@
 .postsContainer {
     background-color: #F1F2F5;
     margin-left: 20px;
-    width: 600px;
-    max-width: 370px;
     width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 5px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.title_posts {
-    font-size: 16px;
-    font-weight: bold;
+.addPostBlock {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
-.input_news {
+.btnCreatePost {
+    margin-bottom: 15px;
     height: 40px;
     width: 100%;
-    background-color: #e5e5e5;
-    border: none;
-    outline: none;
-    border-radius: 5px;
+    border-radius: 6px;
+    background-color: #E5E6EB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+    color: #8C939C;
+    font-size: 17px;
+    font-weight: 700;
+
+    &:hover {
+        background-color: #c7c7c7;
+        color: #000;
+    }
 }
 
-
+.addPostForm {
+    width: 100%;
+    border-radius: 6px;
+    background-color: #F1F2F5;
+    border: none;
+    display: flex;
+    align-items: center;
+}
 

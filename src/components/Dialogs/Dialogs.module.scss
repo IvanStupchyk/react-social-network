@@ -1,16 +1,39 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
 }
 
-.dialogsItems  {
-    padding: 10px;
+.dialogsItems {
+  padding: 10px;
 }
 
 .active {
-    color: gold;
+  color: gold;
 }
 
 .messages {
-    padding: 10px;
+  padding: 10px;
+}
+
+.addMessageBtnBlock {
+  display: flex;
+  align-items: center;
+}
+
+.addMessageField {
+  display: flex;
+}
+
+.dialogsUserPhoto {
+  width: 40px;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }

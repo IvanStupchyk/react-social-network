@@ -1,10 +1,57 @@
-.item {
-  padding: 10px;
-  color: green;
+.post {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.topBlockPost {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+}
+
+.avatarPostContainer {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
 
   img {
-    height: 50px;
-    width: 50px;
     border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
+}
+
+.likeHeartContainer {
+  margin-bottom: 6px;
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.likesBlock {
+  display: flex;
+  align-items: center;
+  color: #66676B;
+}
+
+.postMessage {
+  width: 100%;
+  margin-bottom: 10px;
 }

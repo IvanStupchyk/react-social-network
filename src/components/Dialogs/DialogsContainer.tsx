@@ -8,10 +8,12 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {withAuthRedirect} from "../../hoc/AuthRedirect";
 import {compose} from "redux";
+import {ProfileType} from "../../redux/profile-reducer";
 
 type MapStatePropsType = {
     dialogsPage: DialogsPageType
     isAuth: boolean
+    profile: null | ProfileType
 }
 
 type mapDispatchToPropsType = {
@@ -23,7 +25,8 @@ export type DialogsPropsType = MapStatePropsType & mapDispatchToPropsType
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsPage: state.dialogsPage,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        profile: state.profilePage.profile,
     }
 }
 

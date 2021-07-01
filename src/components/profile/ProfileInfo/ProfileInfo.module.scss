@@ -28,6 +28,8 @@
 
 .userName {
   margin-right: 50px;
+  max-width: 300px;
+  overflow: hidden;
   font-size: 28px;
   font-weight: bold;
 }
@@ -91,8 +93,10 @@
 }
 
 .userContacts {
+  padding: 15px;
   max-width: 370px;
   width: 100%;
+  overflow: hidden;
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 0 5px 2px 1px rgba(0, 0, 0, 0.2);

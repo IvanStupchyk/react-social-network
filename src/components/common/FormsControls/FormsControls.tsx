@@ -12,7 +12,6 @@ export const FormControl: React.FC<FormControlPropsType> = ({meta: {error, touch
     return (
         <div className={`${s.formControl} ${hasError && s.error}`}>
             {children}
-            {hasError && <span>{error}</span>}
         </div>
     )
 }

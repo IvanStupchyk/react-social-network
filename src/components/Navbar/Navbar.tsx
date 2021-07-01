@@ -33,6 +33,7 @@ export const Navbar = (props: NavbarPropsType) => {
                     <NavLink to="/friends" activeClassName={s.activeLink}>Friends</NavLink>
                 </div>
             </div>
+            {props.isAuth &&
             <div className={s.btnsHeaderContainer}>
                 <div className={s.settingsBtn}>
                     <NavLink to="/settings" activeClassName={s.activeLink}>
@@ -41,22 +42,12 @@ export const Navbar = (props: NavbarPropsType) => {
                     </NavLink>
                 </div>
                 <div className={s.logInOutBtn}>
-                    {props.isAuth
-                        ? <div className={s.logOutBtnContainer}>
-                            <img alt={'icon'} src={logOutIcon}/>
-                            <div className={s.btnLogInOutContent}>
-                                <button onClick={props.logout}>Log out</button>
-                            </div>
-                        </div>
-                        : <NavLink to={'/login'}>
-                            <img alt={'icon'} src={logOutIcon}/>
-                            <div className={s.btnLogInOutContent}>
-                                Login
-                            </div>
-                        </NavLink>
-                    }
+                    <div className={s.btnLogInOutContent} onClick={props.logout}>
+                        <button>Log out</button>
+                    </div>
                 </div>
             </div>
+            }
         </nav>
     )
 }

@@ -76,7 +76,6 @@ export const ProfileInfo = ({profile, status, updateStatusUser, isOwner, savePho
                     </div>
                 </div>
                 }
-
             </div>
 
             <div className={s.bottomInfoBlock}>

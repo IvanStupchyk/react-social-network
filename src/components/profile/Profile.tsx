@@ -1,6 +1,5 @@
 import React from "react";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {ProfilePropsType} from "./ProfileContainer";
 import {Redirect} from "react-router-dom";
 
@@ -19,7 +18,6 @@ export const Profile = (props: ProfilePropsType) => {
                          savePhoto={props.savePhoto}
                          saveProfile={props.saveProfile}
             />
-
         </div>
     )
 }

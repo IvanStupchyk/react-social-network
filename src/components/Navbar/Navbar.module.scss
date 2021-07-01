@@ -1,5 +1,5 @@
 .nav {
-  padding: 20px 0 0 0 ;
+  padding: 20px 0 0 0;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -26,6 +26,7 @@
     height: 60px;
     border-bottom: 2px solid #E5E5E5;
     transition: .2s;
+
     &.activeLink {
       color: #0572EF;
       border-bottom: 2px solid #0572EF;
@@ -37,14 +38,6 @@
   }
 }
 
-.tab_friend {
-  margin-top: 30px;
-}
-
-.title_friend {
-  font-size: 18px;
-}
-
 .settingsBtn {
   padding: 3px;
   margin-right: 12px;
@@ -53,6 +46,7 @@
   height: 35px;
   border-radius: 6px;
   background-color: #E5E6EB;
+  transition: .2s;
 
   img {
     margin-right: 5px;
@@ -64,9 +58,19 @@
     align-items: center;
     text-decoration: none;
     color: #66676B;
+    transition: .2s;
+
     &.activeLink {
       color: #0572EF;
     }
+  }
+
+  &:hover {
+    background-color: #d3d3d9;
+  }
+
+  &:hover a {
+    color: #000;
   }
 }
 
@@ -82,31 +86,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  button, a {
+  background-image: url("../../images/icons/logOutIcon.svg");
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 5px;
+  transition: .2s;
+  button {
+    margin-left: 15px;
     color: #fff;
   }
 
-  a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &:hover {
+    cursor: pointer;
+    background-color: #0362d5;
   }
-
-  img {
-    margin-right: 5px;
-  }
-}
-
-.logOutBtnContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btnLogInOutContent {
-  width: 65px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
