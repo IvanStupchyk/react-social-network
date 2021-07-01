@@ -1,18 +1,18 @@
 export let initialState: DialogsPageType = {
     dialogs: [
-        {id: '1', name: 'Vania'},
-        {id: '2', name: 'Andrey'},
-        {id: '3', name: 'Sveta'},
-        {id: '4', name: 'Sasha'},
-        {id: '5', name: 'Victor'},
-        {id: '6', name: 'Valera'}
+        {id: '1', name: 'Andrey Sergeev'},
+        {id: '2', name: 'Petya Samysin'},
+        {id: '3', name: 'Ira Tolochko'},
+        {id: '4', name: 'Sasha Sarychev'},
+        {id: '5', name: 'Stepan Klimov'},
+        {id: '6', name: 'Anna Starkova'}
     ],
     messages: [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'How is your it-kamasutra?'},
-        {id: 3, message: 'Yo'},
-        {id: 4, message: 'Yo'},
-        {id: 5, message: 'Yo'}
+        {id: 1, message: 'Its just testing page for adding messages'},
+        {id: 2, message: 'Something interesting'},
+        {id: 3, message: 'this is good if you read this'},
+        {id: 4, message: 'Hi, bro!'},
+        {id: 5, message: 'Add something if you want'}
     ]
 }
 

@@ -3,7 +3,7 @@ import {FormDataType, LoginReduxForm} from "./LoginForm";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
-import { Redirect } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import s from './LoginForm.module.scss'
 
 type MapStatePropsType = {

@@ -15,10 +15,10 @@ class NavbarContainer extends React.Component<OwnPropsType, any> {
     render(): React.ReactNode {
         return (
             <Navbar
-                isAuth = {this.props.isAuth}
+                isAuth={this.props.isAuth}
                 login={this.props.login}
                 logout={this.props.logout}
-                 />
+            />
         )
     }
 }

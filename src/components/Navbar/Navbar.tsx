@@ -2,7 +2,6 @@ import React from "react";
 import s from './Navbar.module.scss';
 import {NavLink} from "react-router-dom";
 import settingsIcon from '../../images/icons/settingsIcon.svg'
-import logOutIcon from '../../images/icons/logOutIcon.svg'
 
 type NavbarPropsType = {
     isAuth: boolean
@@ -18,7 +17,7 @@ export const Navbar = (props: NavbarPropsType) => {
                     <NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink>
                 </div>
                 <div className={`${s.item} ${s.active}`}>
-                    <NavLink to="/dialogs" activeClassName={s.activeLink}>Messages</NavLink>
+                    <NavLink to="/dialogs" activeClassName={s.activeLink}>Dialogs</NavLink>
                 </div>
                 <div className={s.item}>
                     <NavLink to="/users" activeClassName={s.activeLink}>Users</NavLink>

@@ -24,10 +24,14 @@ export let User = ({user, followingInProgress, follow, unFollow}: UserPropsType)
                 <div>
                     {user.followed
                         ? <button disabled={followingInProgress.some(id => id === user.id)}
-                                  onClick={() => {unFollow(user.id)}} className={s.followUnfollowBtn}>unfollow</button>
+                                  onClick={() => {
+                                      unFollow(user.id)
+                                  }} className={s.followUnfollowBtn}>unfollow</button>
 
                         : <button disabled={followingInProgress.some(id => id === user.id)}
-                                  onClick={() => {follow(user.id)}} className={s.followUnfollowBtn}>follow</button>}
+                                  onClick={() => {
+                                      follow(user.id)
+                                  }} className={s.followUnfollowBtn}>follow</button>}
                 </div>
             </div>
 

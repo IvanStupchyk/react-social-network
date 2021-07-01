@@ -17,7 +17,7 @@ export const Dialogs = (props: DialogsPropsType) => {
 
     return (
         <div className={s.dialogsContainer}>
-            <div>
+            <div className={s.usersDialogs}>
                 <div className={s.dialogsItems}>
                     {dialogsElement}
                 </div>

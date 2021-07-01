@@ -76,7 +76,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
         startPage: getStartPage(state),
-        isAuth:  getIsAuth(state)
+        isAuth: getIsAuth(state)
     }
 }
 

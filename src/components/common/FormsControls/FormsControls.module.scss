@@ -12,6 +12,10 @@
       color: red;
     }
   }
+
+  input, textarea {
+    outline: none;
+  }
 }
 
 .formSummaryError {
@@ -34,6 +38,7 @@
   span {
     margin-left: 15px;
   }
+
   &:hover {
     background-color: #E9F3FE;
   }

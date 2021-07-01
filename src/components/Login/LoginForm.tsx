@@ -46,11 +46,11 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormType> 
                 <span>Remember me</span>
             </label>
             <div className={s.captchaContainer}>
-            {captchaUrl &&
+                {captchaUrl &&
                 <div className={s.captchaImageContainer}>
                     <img alt={'captcha'} src={captchaUrl}/>
                 </div>
-            }
+                }
 
                 {captchaUrl &&
                 <Field

@@ -22,7 +22,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<FormAddMessageType>> = (
                 className={s.textareaAddMessage}
                 maxLength={100}
             />
-            <button className={s.btnAddMessage} />
+            <button className={s.btnAddMessage}/>
         </Form>
     )
 }

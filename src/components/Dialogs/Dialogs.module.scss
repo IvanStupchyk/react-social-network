@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+.usersDialogs {
+  display: flex;
+  justify-content: space-between;
+}
+
 .dialogsItems {
   padding: 10px;
 }
@@ -13,6 +18,8 @@
 
 .messages {
   padding: 10px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .addMessageBtnBlock {
@@ -58,7 +65,8 @@
   background-image: url("../../images/icons/arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-position-x: 10px;
+  background-position-x: 12px;
+
   &:hover {
     background-color: #0362d5;
   }
