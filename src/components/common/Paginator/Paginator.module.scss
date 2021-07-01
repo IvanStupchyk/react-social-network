@@ -1,4 +1,53 @@
-.selectedPage {
-    font-weight: bold;
+.paginationContainer {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
 }
 
+.selectedPage {
+  color: #0572EF;
+  border: 1px solid #0572EF !important;
+}
+
+.btnBack, .btnNext, .numberPage {
+  margin-right: 4px;
+  height: 32px;
+  width: 32px;
+  border-radius: 4px;
+  border: 1px solid #E5E6EB;
+}
+
+.btnBack, .btnNext {
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 10px;
+  transition: .2s;
+
+  &[disabled] {
+    cursor: default;
+    background-color: #E5E6EB;
+  }
+  &:hover {
+    background-color: #efefef;
+  }
+}
+
+.btnNext {
+  background-image: url("../../../images/icons/arrowNext.svg");
+}
+
+.btnBack {
+  background-image: url("../../../images/icons/arrowBack.svg");
+}
+
+.numberPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .2s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #efefef;
+  }
+}

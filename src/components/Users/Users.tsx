@@ -2,6 +2,7 @@ import React from "react";
 import {UserType} from "../../redux/users-reducer";
 import {Paginator} from "../common/Paginator/Paginator";
 import {User} from "./User";
+import s from "./User.module.scss";
 
 type UsersPropsType = {
     totalCount: number
@@ -26,24 +27,24 @@ export let Users = (props: UsersPropsType) => {
 
     return (
         <div>
-            <Paginator
-            totalCount={props.totalCount}
-            currentPage={props.currentPage}
-            onPageChanged={props.onPageChanged}
-            pageSize={props.pageSize}
-            changeStartPage={props.changeStartPage}
-            startPage={props.startPage}
-            />
-            {
-                props.items.map(u => <div key={u.id}>
+            <div className={s.usersContainer}>
+                {props.items.map(u => <div key={u.id}>
                     <User
                         user={u}
                         followingInProgress={props.followingInProgress}
                         follow={props.follow}
                         unFollow={props.unFollow}
                     />
-                </div>)
-            }
+                </div>)}
+            </div>
+            <Paginator
+                totalCount={props.totalCount}
+                currentPage={props.currentPage}
+                onPageChanged={props.onPageChanged}
+                pageSize={props.pageSize}
+                changeStartPage={props.changeStartPage}
+                startPage={props.startPage}
+            />
         </div>
     )
 }

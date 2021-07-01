@@ -1,6 +1,6 @@
-.dialogs {
-  display: grid;
-  grid-template-columns: 2fr 10fr;
+.dialogsContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .dialogsItems {
@@ -22,11 +22,13 @@
 
 .addMessageField {
   display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .dialogsUserPhoto {
   width: 40px;
-  margin-right: 30px;
+  margin-right: 10px;
   display: flex;
   align-items: center;
 
@@ -35,5 +37,29 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
+  }
+}
+
+.textareaAddMessage {
+  margin-right: -15px;
+  padding: 10px;
+  height: 40px;
+  background-color: #E5E6EB;
+  border-color: #E5E6EB;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+}
+
+.btnAddMessage {
+  height: 40px;
+  width: 44px;
+  border-radius: 6px;
+  background-color: #0572EF;
+  background-image: url("../../images/icons/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: 10px;
+  &:hover {
+    background-color: #0362d5;
   }
 }

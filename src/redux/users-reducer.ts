@@ -3,7 +3,7 @@ import {AppThunkType} from "./redux-store";
 
 let initialState: UsersPageType = {
     items: [],
-    pageSize: 5,
+    pageSize: 6,
     currentPage: 1,
     totalCount: 0,
     isFetching: true,

@@ -13,34 +13,24 @@ type UserPropsType = {
 
 export let User = ({user, followingInProgress, follow, unFollow}: UserPropsType) => {
     return (
-        <div>
-            <span>
-                <div>
-                    <NavLink to={`/profile/${user.id}`}>
-                        <img alt={'user avatar'} src={user.photos.small !== null ? user.photos.small : userPhoto}
-                             className={s.userPhoto}
-                        />
-                    </NavLink>
-                </div>
+        <div className={s.userContainer}>
+            <div className={s.userPhoto}>
+                <NavLink to={`/profile/${user.id}`}>
+                    <img alt={'user avatar'} src={user.photos.small !== null ? user.photos.small : userPhoto}/>
+                </NavLink>
+            </div>
+            <div className={s.rightUserInfoBlock}>
+                <div className={s.userName}>{user.name}</div>
                 <div>
                     {user.followed
                         ? <button disabled={followingInProgress.some(id => id === user.id)}
-                                  onClick={() => {
-                                      unFollow(user.id)
-                                  }}>unfollow</button>
+                                  onClick={() => {unFollow(user.id)}} className={s.followUnfollowBtn}>unfollow</button>
 
                         : <button disabled={followingInProgress.some(id => id === user.id)}
-                                  onClick={() => {
-                                      follow(user.id)
-                                  }}>follow</button>}
+                                  onClick={() => {follow(user.id)}} className={s.followUnfollowBtn}>follow</button>}
                 </div>
-            </span>
-            <span>
-                <span>
-                    <div>{user.name}</div>
-                    <div>{user.status}</div>
-                </span>
-            </span>
+            </div>
+
         </div>
     )
 }

@@ -1,7 +1,51 @@
+.usersContainer {
+  padding: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.userContainer {
+  padding: 10px;
+  display: flex;
+}
+
 .userPhoto {
-    height: 100px;
-    width: 100px;
+  margin-right: 25px;
+  height: 120px;
+  width: 120px;
+
+  img {
+    width: 100%;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
+  }
+}
+
+.userName {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.followUnfollowBtn {
+  height: 35px;
+  width: 85px;
+  border-radius: 6px;
+  background-color: #f1f1f1;
+  color: #0572EF;
+  transition: .2s;
+
+  &:hover {
+    background-color: #e3e3e3;
+  }
+}
+
+.rightUserInfoBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 250px;
+  overflow: hidden;
 }

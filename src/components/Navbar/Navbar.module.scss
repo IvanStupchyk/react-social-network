@@ -8,11 +8,14 @@
 }
 
 .pagesLinksContainer {
+  margin-right: 10px;
   display: flex;
+  max-width: 450px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .item {
-  margin-right: 25px;
   margin-bottom: -2px;
 
   a {
@@ -91,6 +94,7 @@
   background-position-y: center;
   background-position-x: 5px;
   transition: .2s;
+
   button {
     margin-left: 15px;
     color: #fff;
