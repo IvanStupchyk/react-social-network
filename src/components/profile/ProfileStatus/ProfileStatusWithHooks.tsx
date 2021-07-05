@@ -11,7 +11,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksType) => {
 
     useEffect(() => {
         setStatus(props.status)
-    },[props.status])
+    }, [props.status])
 
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)

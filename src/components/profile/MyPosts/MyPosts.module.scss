@@ -1,43 +1,43 @@
 .postsContainer {
-    background-color: #F1F2F5;
-    margin-left: 20px;
-    width: 100%;
+  background-color: #F1F2F5;
+  margin-left: 20px;
+  width: 100%;
 }
 
 .addPostBlock {
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
 .btnCreatePost {
-    margin-bottom: 15px;
-    height: 40px;
-    width: 100%;
-    border-radius: 6px;
-    background-color: #E5E6EB;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: .2s;
-    color: #8C939C;
-    font-size: 17px;
-    font-weight: 700;
+  margin-bottom: 15px;
+  height: 40px;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #E5E6EB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .2s;
+  color: #8C939C;
+  font-size: 17px;
+  font-weight: 700;
 
-    &:hover {
-        background-color: #c7c7c7;
-        color: #000;
-    }
+  &:hover {
+    background-color: #c7c7c7;
+    color: #000;
+  }
 }
 
 .addPostForm {
-    width: 100%;
-    border-radius: 6px;
-    background-color: #F1F2F5;
-    border: none;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #F1F2F5;
+  border: none;
+  display: flex;
+  align-items: center;
 }
 

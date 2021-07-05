@@ -4,7 +4,6 @@ import {Field, Form, InjectedFormProps, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../../common/FormsControls/FormsControls";
 import {required} from "../../../../utils/validators/validators";
 import s from "../../../common/FormsControls/FormsControls.module.scss";
-import doubleCheckMark from '../../../../images/icons/doubleCheckMark.svg'
 
 type ProfileDataFormType = {
     profile: ProfileType

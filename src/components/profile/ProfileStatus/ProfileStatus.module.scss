@@ -4,11 +4,20 @@
   color: #66676B;
   max-width: 300px;
   overflow: hidden;
+
   &:hover {
     cursor: pointer;
   }
 }
 
-
+.profileStatusEdit {
+  height: 39px;
+  max-width: 200px;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #F1F2F5;
+  outline: none;
+  border: none;
+}
 
 

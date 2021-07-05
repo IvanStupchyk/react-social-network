@@ -35,28 +35,29 @@ export class ProfileStatus extends React.Component<OwnPropsType, any> {
     }
 
     componentDidUpdate(prevProps: Readonly<OwnPropsType>, prevState: Readonly<any>, snapshot?: any): void {
-         if (prevProps.status !== this.props.status) {
-             this.setState({
-                 status: this.props.status
-             })
-         }
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render(): React.ReactNode {
         return (
             <div>
                 {this.state.editMode ?
-                    <div>
-                        <input
-                            autoFocus={true}
-                            onBlur={this.deactivateEditMode}
-                            value={this.state.status}
-                            onChange={this.onStatusChange}
-                        />
-                    </div>
+                    <input
+                        autoFocus={true}
+                        onBlur={this.deactivateEditMode}
+                        value={this.state.status}
+                        onChange={this.onStatusChange}
+                        className={s.profileStatusEdit}
+                        maxLength={30}
+                    />
                     :
                     <div>
-                        <span className={s.profileStatus} onDoubleClick={this.activateEditMode}>{this.props.status || '----'}</span>
+                        <span className={s.profileStatus}
+                              onDoubleClick={this.activateEditMode}>{this.props.status || '----'}</span>
                     </div>
                 }
             </div>

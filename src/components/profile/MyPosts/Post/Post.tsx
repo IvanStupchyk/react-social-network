@@ -15,7 +15,8 @@ export const Post = (props: propsType) => {
         <div className={s.post}>
             <div className={s.topBlockPost}>
                 <div className={s.avatarPostContainer}>
-                    <img alt={'user avatar'} src={props.profile?.photos.small ? props.profile.photos.small : userPhoto}/>
+                    <img alt={'user avatar'}
+                         src={props.profile?.photos.small ? props.profile.photos.small : userPhoto}/>
                 </div>
                 <p>{props.profile?.fullName}</p>
             </div>
